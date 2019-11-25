@@ -68,25 +68,25 @@ public class Interface extends JFrame {
 		DiviseurHaut.setLayout(null);
 		
 		JButton btnLibre = new JButton("");
-		btnLibre.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_libre.png"));
+		btnLibre.setIcon(new ImageIcon("F:\\DevoirModelisation\\TetraTraiteur\\bin\\button_libre.png"));
 		btnLibre.setBounds(312, 11, 94, 29);
 		DiviseurHaut.add(btnLibre);
 		btnLibre.setVisible(false);
 		
 		JButton btnOccupee = new JButton("");
-		btnOccupee.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_occupee.png"));
+		btnOccupee.setIcon(new ImageIcon("images\\button_occupee.png"));
 		btnOccupee.setBounds(416, 11, 94, 29);
 		DiviseurHaut.add(btnOccupee);
 		btnOccupee.setVisible(false);
 		
 		JButton btnDebarrasser = new JButton("");
-		btnDebarrasser.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_a-debarrasser.png"));
+		btnDebarrasser.setIcon(new ImageIcon("images\\button_a-debarrasser.png"));
 		btnDebarrasser.setBounds(520, 11, 94, 29);
 		DiviseurHaut.add(btnDebarrasser);
 		btnDebarrasser.setVisible(false);
 		
 		JButton btnAutreServeur = new JButton("");
-		btnAutreServeur.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_autre-serveur.png"));
+		btnAutreServeur.setIcon(new ImageIcon("images\\button_autre-serveur.png"));
 		btnAutreServeur.setBounds(624, 11, 94, 29);
 		DiviseurHaut.add(btnAutreServeur);
 		btnAutreServeur.setVisible(false);
@@ -108,7 +108,7 @@ public class Interface extends JFrame {
 		
 		JLabel imgDiviseurHaut = new JLabel("");
 		imgDiviseurHaut.setBounds(0, 0, 728, 48);
-		imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(actif).PNG"));
+		imgDiviseurHaut.setIcon(new ImageIcon("images\\DiviseurHaut(actif).PNG"));
 		DiviseurHaut.add(imgDiviseurHaut);
 		
 		JPanel DiviseurDroite = new JPanel();
@@ -133,7 +133,7 @@ public class Interface extends JFrame {
 		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
 		imgUtilisateur.setBounds(0, 0, 119, 47);
 		PaneauUtilisateur.add(imgUtilisateur);
-		imgUtilisateur.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\Banner2.PNG"));
+		imgUtilisateur.setIcon(new ImageIcon("images\\Banner2.PNG"));
 		
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -148,21 +148,21 @@ public class Interface extends JFrame {
 		JLabel imgTemps = new JLabel("");
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
-		imgTemps.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\bane3.PNG"));
+		imgTemps.setIcon(new ImageIcon("images\\bane3.PNG"));
 		
 		JButton btnArchive = new JButton("");
 		btnArchive.setForeground(SystemColor.desktop);
 		btnArchive.setBackground(SystemColor.desktop);
 		btnArchive.setBounds(0, 363, 119, 74);
 		DiviseurDroite.add(btnArchive);
-		btnArchive.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnArchive.png"));
+		btnArchive.setIcon(new ImageIcon("images\\btnArchive.png"));
 		
 		JButton btnUtilisateur = new JButton("");
 		btnUtilisateur.setForeground(SystemColor.desktop);
 		btnUtilisateur.setBackground(SystemColor.desktop);
 		btnUtilisateur.setBounds(0, 146, 119, 74);
 		DiviseurDroite.add(btnUtilisateur);
-		btnUtilisateur.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnChange.png"));
+		btnUtilisateur.setIcon(new ImageIcon("images\\btnChange.png"));
 		
 		JButton btnModTable = new JButton("");
 		btnModTable.addActionListener(new ActionListener() {
@@ -170,7 +170,7 @@ public class Interface extends JFrame {
 				
 				if(btnsActives) {
 					btnsActives = false;
-					imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(inactif).jpg"));
+					imgDiviseurHaut.setIcon(new ImageIcon("images\\DiviseurHaut(inactif).jpg"));
 					btnLibre.setVisible(false);
 					btnOccupee.setVisible(false);
 					btnDebarrasser.setVisible(false);
@@ -181,7 +181,7 @@ public class Interface extends JFrame {
 				
 				else {
 					btnsActives = true;
-					imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(actif).png"));
+					imgDiviseurHaut.setIcon(new ImageIcon("images\\DiviseurHaut(actif).png"));
 					btnLibre.setVisible(true);
 					btnOccupee.setVisible(true);
 					btnDebarrasser.setVisible(true);
@@ -194,14 +194,14 @@ public class Interface extends JFrame {
 		});
 		btnModTable.setBounds(0, 250, 119, 74);
 		DiviseurDroite.add(btnModTable);
-		btnModTable.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnTable.png"));
+		btnModTable.setIcon(new ImageIcon("images\\btnTable.png"));
 		btnModTable.setForeground(SystemColor.desktop);
 		btnModTable.setBackground(SystemColor.desktop);
 		
 		JLabel imgDiviseurDroite = new JLabel("New label");
 		imgDiviseurDroite.setBounds(0, 118, 119, 365);
 		DiviseurDroite.add(imgDiviseurDroite);
-		imgDiviseurDroite.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\Bannerdroite.PNG"));
+		imgDiviseurDroite.setIcon(new ImageIcon("images\\Bannerdroite.PNG"));
 	
 		
 		// Boutons pour les tables de 1 à 24
@@ -423,7 +423,7 @@ public class Interface extends JFrame {
 		contentPane.add(btnTable24);
 		
 		JLabel imgSalle = new JLabel("");
-		imgSalle.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\InterfaceSalle.png"));
+		imgSalle.setIcon(new ImageIcon("images\\InterfaceSalle.png"));
 		imgSalle.setBounds(0, 48, 725, 435);
 		contentPane.add(imgSalle);
 		

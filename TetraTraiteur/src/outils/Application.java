@@ -54,7 +54,7 @@ public class Application extends JFrame {
 		
 		JLabel imgDiviseurHaut = new JLabel("");
 		imgDiviseurHaut.setBounds(0, 0, 728, 48);
-		imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(inactif).jpg"));
+		imgDiviseurHaut.setIcon(new ImageIcon("images\\DiviseurHaut(inactif).jpg"));
 		DiviseurHaut.add(imgDiviseurHaut);
 		
 		JPanel DiviseurDroite = new JPanel();
