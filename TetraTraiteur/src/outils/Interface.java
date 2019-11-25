@@ -12,6 +12,11 @@ import java.awt.Window.Type;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JTextPane;
+import java.awt.SystemColor;
+import javax.swing.DropMode;
+import javax.swing.SwingConstants;
 
 public class Interface extends JFrame {
 
@@ -37,22 +42,29 @@ public class Interface extends JFrame {
 	 * Create the frame.
 	 */
 	public Interface() {
-		setEnabled(false);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 862, 522);
 		contentPane = new JPanel();
+		contentPane.setForeground(SystemColor.desktop);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel DiviseurHaut = new JPanel();
-		DiviseurHaut.setBackground(Color.GREEN);
 		DiviseurHaut.setBounds(0, 0, 728, 48);
+		DiviseurHaut.setBackground(Color.GREEN);
 		contentPane.add(DiviseurHaut);
+		DiviseurHaut.setLayout(null);
+		
+		JLabel imgDiviseurHaut = new JLabel("");
+		imgDiviseurHaut.setBounds(0, 0, 728, 48);
+		imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(inactif).jpg"));
+		DiviseurHaut.add(imgDiviseurHaut);
 		
 		JPanel DiviseurDroite = new JPanel();
-		DiviseurDroite.setBackground(Color.RED);
 		DiviseurDroite.setBounds(727, 0, 119, 483);
+		DiviseurDroite.setBackground(Color.RED);
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 		
@@ -60,6 +72,19 @@ public class Interface extends JFrame {
 		PaneauUtilisateur.setBounds(0, 0, 119, 47);
 		DiviseurDroite.add(PaneauUtilisateur);
 		PaneauUtilisateur.setBackground(Color.YELLOW);
+		PaneauUtilisateur.setLayout(null);
+		
+		JLabel boxUtilisateur = new JLabel("Utilisateur");
+		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
+		boxUtilisateur.setFont(new Font("Tahoma", Font.BOLD, 11));
+		boxUtilisateur.setBounds(10, 11, 99, 25);
+		PaneauUtilisateur.add(boxUtilisateur);
+		
+		JLabel imgUtilisateur = new JLabel("");
+		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
+		imgUtilisateur.setBounds(0, 0, 119, 47);
+		PaneauUtilisateur.add(imgUtilisateur);
+		imgUtilisateur.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\Banner2.PNG"));
 		
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -67,23 +92,39 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(PaneauTemps);
 		PaneauTemps.setLayout(null);
 		
-		JPanel PaneauHeure = new JPanel();
-		PaneauHeure.setBackground(Color.CYAN);
-		PaneauHeure.setBounds(57, 0, 62, 25);
-		PaneauTemps.add(PaneauHeure);
+		JLabel boxTemps = new JLabel("Temps");
+		boxTemps.setBounds(37, 26, 46, 14);
+		PaneauTemps.add(boxTemps);
 		
-		JButton BtnChangerUtilisateur = new JButton("Changer \r\nUtilisateur");
-		BtnChangerUtilisateur.setEnabled(false);
-		BtnChangerUtilisateur.setFont(new Font("Tahoma", Font.PLAIN, 8));
-		BtnChangerUtilisateur.setBounds(20, 147, 89, 58);
-		DiviseurDroite.add(BtnChangerUtilisateur);
+		JLabel imgTemps = new JLabel("");
+		imgTemps.setBounds(0, 0, 119, 71);
+		PaneauTemps.add(imgTemps);
+		imgTemps.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\bane3.PNG"));
 		
-		JButton btnModifiertatTable = new JButton("Modifier \u00C9tat Table");
-		btnModifiertatTable.setBounds(20, 259, 89, 58);
-		DiviseurDroite.add(btnModifiertatTable);
-		
-		JButton btnArchive = new JButton("Archive");
-		btnArchive.setBounds(20, 374, 89, 58);
+		JButton btnArchive = new JButton("");
+		btnArchive.setForeground(SystemColor.desktop);
+		btnArchive.setBackground(SystemColor.desktop);
+		btnArchive.setBounds(0, 362, 119, 74);
 		DiviseurDroite.add(btnArchive);
+		btnArchive.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnArchive.png"));
+		
+		JButton btnUtilisateur = new JButton("");
+		btnUtilisateur.setForeground(SystemColor.desktop);
+		btnUtilisateur.setBackground(SystemColor.desktop);
+		btnUtilisateur.setBounds(0, 146, 119, 74);
+		DiviseurDroite.add(btnUtilisateur);
+		btnUtilisateur.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnChange.png"));
+		
+		JButton btnModTable = new JButton("");
+		btnModTable.setBounds(0, 247, 119, 74);
+		DiviseurDroite.add(btnModTable);
+		btnModTable.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnTable.png"));
+		btnModTable.setForeground(SystemColor.desktop);
+		btnModTable.setBackground(SystemColor.desktop);
+		
+		JLabel imgDiviseurDroite = new JLabel("New label");
+		imgDiviseurDroite.setBounds(0, 118, 119, 365);
+		DiviseurDroite.add(imgDiviseurDroite);
+		imgDiviseurDroite.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\Bannerdroite.PNG"));
 	}
 }
