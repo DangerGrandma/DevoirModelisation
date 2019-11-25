@@ -27,7 +27,11 @@ import java.awt.event.ActionEvent;
 public class Interface extends JFrame {
 
 	private JPanel contentPane;
+	private static boolean btnsActives = false;
+	//private static String etatChoisi = "";
 
+
+	
 	/**
 	 * Launch the application.
 	 */
@@ -63,9 +67,48 @@ public class Interface extends JFrame {
 		contentPane.add(DiviseurHaut);
 		DiviseurHaut.setLayout(null);
 		
+		JButton btnLibre = new JButton("");
+		btnLibre.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_libre.png"));
+		btnLibre.setBounds(312, 11, 94, 29);
+		DiviseurHaut.add(btnLibre);
+		btnLibre.setVisible(false);
+		
+		JButton btnOccupee = new JButton("");
+		btnOccupee.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_occupee.png"));
+		btnOccupee.setBounds(416, 11, 94, 29);
+		DiviseurHaut.add(btnOccupee);
+		btnOccupee.setVisible(false);
+		
+		JButton btnDebarrasser = new JButton("");
+		btnDebarrasser.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_a-debarrasser.png"));
+		btnDebarrasser.setBounds(520, 11, 94, 29);
+		DiviseurHaut.add(btnDebarrasser);
+		btnDebarrasser.setVisible(false);
+		
+		JButton btnAutreServeur = new JButton("");
+		btnAutreServeur.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\button_autre-serveur.png"));
+		btnAutreServeur.setBounds(624, 11, 94, 29);
+		DiviseurHaut.add(btnAutreServeur);
+		btnAutreServeur.setVisible(false);
+		
+		JButton btnTableSaisie = new JButton("Table#");
+		btnTableSaisie.setBounds(22, 13, 89, 23);
+		btnTableSaisie.setContentAreaFilled(false);
+		btnTableSaisie.setOpaque(true);
+		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
+		DiviseurHaut.add(btnTableSaisie);
+		btnTableSaisie.setVisible(false);
+		
+		JLabel lblModTable = new JLabel("Choisir Table");
+		lblModTable.setFont(new Font("Arial", Font.BOLD, 12));
+		lblModTable.setHorizontalAlignment(SwingConstants.CENTER);
+		lblModTable.setBounds(142, 18, 78, 14);
+		DiviseurHaut.add(lblModTable);
+		lblModTable.setVisible(false);
+		
 		JLabel imgDiviseurHaut = new JLabel("");
 		imgDiviseurHaut.setBounds(0, 0, 728, 48);
-		imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(inactif).jpg"));
+		imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(actif).PNG"));
 		DiviseurHaut.add(imgDiviseurHaut);
 		
 		JPanel DiviseurDroite = new JPanel();
@@ -122,6 +165,33 @@ public class Interface extends JFrame {
 		btnUtilisateur.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnChange.png"));
 		
 		JButton btnModTable = new JButton("");
+		btnModTable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(btnsActives) {
+					btnsActives = false;
+					imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(inactif).jpg"));
+					btnLibre.setVisible(false);
+					btnOccupee.setVisible(false);
+					btnDebarrasser.setVisible(false);
+					btnAutreServeur.setVisible(false);
+					btnTableSaisie.setVisible(false);
+					lblModTable.setVisible(false);
+				}
+				
+				else {
+					btnsActives = true;
+					imgDiviseurHaut.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\DiviseurHaut(actif).png"));
+					btnLibre.setVisible(true);
+					btnOccupee.setVisible(true);
+					btnDebarrasser.setVisible(true);
+					btnAutreServeur.setVisible(true);
+					btnTableSaisie.setVisible(true);
+					lblModTable.setVisible(true);
+				}
+			}
+		
+		});
 		btnModTable.setBounds(0, 250, 119, 74);
 		DiviseurDroite.add(btnModTable);
 		btnModTable.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\btnTable.png"));
@@ -134,89 +204,17 @@ public class Interface extends JFrame {
 		imgDiviseurDroite.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\Bannerdroite.PNG"));
 	
 		
-		// Boutons pour les tables de A à F
-		
-		JButton btnTableA = new JButton("A");
-		btnTableA.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableA.setBackground(Color.LIGHT_GRAY);
-		btnTableA.setContentAreaFilled(false);
-		btnTableA.setOpaque(true);
-		btnTableA.setBounds(77, 80, 50, 50);
-		contentPane.add(btnTableA);
-		btnTableA.setOpaque(true);
-
-		
-		JButton btnTableB = new JButton("B");
-		btnTableB.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableB.setBackground(Color.LIGHT_GRAY);
-		btnTableB.setContentAreaFilled(false);
-		btnTableB.setOpaque(true);
-		btnTableB.setBounds(77, 180, 50, 50);
-		contentPane.add(btnTableB);
-		btnTableB.setOpaque(true);
-
-		
-		JButton btnTableC = new JButton("C");
-		btnTableC.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableC.setBackground(Color.LIGHT_GRAY);
-		btnTableC.setContentAreaFilled(false);
-		btnTableC.setOpaque(true);
-		btnTableC.setBounds(77, 280, 50, 50);
-		contentPane.add(btnTableC);
-		btnTableC.setOpaque(true);
-
-		
-		JButton btnTableD = new JButton("D");
-		btnTableD.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableD.setBackground(Color.LIGHT_GRAY);
-		btnTableD.setContentAreaFilled(false);
-		btnTableD.setOpaque(true);
-		btnTableD.setBounds(77, 380, 50, 50);
-		contentPane.add(btnTableD);
-		btnTableD.setOpaque(true);
-
-		
-		JButton btnTableE = new JButton("E");
-		btnTableE.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableE.setBackground(Color.LIGHT_GRAY);
-		btnTableE.setContentAreaFilled(false);
-		btnTableE.setOpaque(true);
-		btnTableE.setBounds(597, 80, 50, 50);
-		contentPane.add(btnTableE);
-		btnTableE.setOpaque(true);
-
-		
-		JButton btnTableF = new JButton("F");
-		btnTableF.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableF.setBackground(Color.LIGHT_GRAY);
-		btnTableF.setContentAreaFilled(false);
-		btnTableF.setOpaque(true);
-		btnTableF.setBounds(597, 180, 50, 50);
-		contentPane.add(btnTableF);
-		btnTableF.setOpaque(true);
-
-		
-		JButton btnTableG = new JButton("G");
-		btnTableG.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableG.setBackground(Color.LIGHT_GRAY);
-		btnTableG.setContentAreaFilled(false);
-		btnTableG.setOpaque(true);
-		btnTableG.setBounds(597, 280, 50, 50);
-		contentPane.add(btnTableG);
-		btnTableG.setOpaque(true);
-
-		
-		JButton btnTableH = new JButton("H");
-		btnTableH.setFont(new Font("Arial", Font.BOLD, 13));
-		btnTableH.setBackground(Color.LIGHT_GRAY);
-		btnTableH.setContentAreaFilled(false);
-		btnTableH.setOpaque(true);
-		btnTableH.setBounds(597, 380, 50, 50);
-		contentPane.add(btnTableH);
-		btnTableH.setOpaque(true);
-
-		
+		// Boutons pour les tables de 1 à 24
+				
 		JButton btnTable1 = new JButton("1");
+		btnTable1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(btnsActives) {
+					btnTableSaisie.setText("Table1");
+					lblModTable.setText("Choisir État");
+				}
+			}
+		});
 		btnTable1.setFont(new Font("Arial", Font.BOLD, 13));
 		btnTable1.setMargin(new Insets(0, 0, 0, 0));
 		btnTable1.setBackground(Color.LIGHT_GRAY);
@@ -224,9 +222,7 @@ public class Interface extends JFrame {
 		btnTable1.setOpaque(true);
 		btnTable1.setBounds(290, 435, 20, 20);
 		contentPane.add(btnTable1);
-		btnTable1.setOpaque(true);
-
-		
+	
 		JButton btnTable2 = new JButton("2");
 		btnTable2.setFont(new Font("Arial", Font.BOLD, 13));
 		btnTable2.setMargin(new Insets(0, 0, 0, 0));
@@ -235,9 +231,7 @@ public class Interface extends JFrame {
 		btnTable2.setOpaque(true);
 		btnTable2.setBounds(290, 395, 20, 20);
 		contentPane.add(btnTable2);
-		btnTable2.setOpaque(true);
-
-		
+	
 		JButton btnTable3 = new JButton("3");
 		btnTable3.setFont(new Font("Arial", Font.BOLD, 13));
 		btnTable3.setMargin(new Insets(0, 0, 0, 0));
@@ -246,8 +240,6 @@ public class Interface extends JFrame {
 		btnTable3.setOpaque(true);
 		btnTable3.setBounds(290, 355, 20, 20);
 		contentPane.add(btnTable3);
-		btnTable3.setOpaque(true);
-
 		
 		JButton btnTable4 = new JButton("4");
 		btnTable4.setFont(new Font("Arial", Font.BOLD, 13));
@@ -257,8 +249,6 @@ public class Interface extends JFrame {
 		btnTable4.setOpaque(true);
 		btnTable4.setBounds(290, 315, 20, 20);
 		contentPane.add(btnTable4);
-		btnTable4.setOpaque(true);
-
 		
 		JButton btnTable5 = new JButton("5");
 		btnTable5.setFont(new Font("Arial", Font.BOLD, 13));
@@ -268,8 +258,6 @@ public class Interface extends JFrame {
 		btnTable5.setOpaque(true);
 		btnTable5.setBounds(290, 275, 20, 20);
 		contentPane.add(btnTable5);
-		btnTable5.setOpaque(true);
-
 		
 		JButton btnTable6 = new JButton("6");
 		btnTable6.setFont(new Font("Arial", Font.BOLD, 13));
@@ -279,8 +267,6 @@ public class Interface extends JFrame {
 		btnTable6.setOpaque(true);
 		btnTable6.setBounds(290, 235, 20, 20);
 		contentPane.add(btnTable6);
-		btnTable6.setOpaque(true);
-
 		
 		JButton btnTable7 = new JButton("7");
 		btnTable7.setMargin(new Insets(0, 0, 0, 0));
@@ -290,8 +276,6 @@ public class Interface extends JFrame {
 		btnTable7.setOpaque(true);
 		btnTable7.setBounds(290, 195, 20, 20);
 		contentPane.add(btnTable7);
-		btnTable7.setOpaque(true);
-
 		
 		JButton btnTable8 = new JButton("8");
 		btnTable8.setFont(new Font("Arial", Font.BOLD, 13));
@@ -301,8 +285,6 @@ public class Interface extends JFrame {
 		btnTable8.setOpaque(true);
 		btnTable8.setBounds(332, 154, 20, 20);
 		contentPane.add(btnTable8);
-		btnTable8.setOpaque(true);
-
 		
 		JButton btnTable9 = new JButton("9");
 		btnTable9.setFont(new Font("Arial", Font.BOLD, 13));
@@ -312,8 +294,6 @@ public class Interface extends JFrame {
 		btnTable9.setOpaque(true);
 		btnTable9.setBounds(372, 154, 20, 20);
 		contentPane.add(btnTable9);
-		btnTable9.setOpaque(true);
-
 		
 		JButton btnTable10 = new JButton("10");
 		btnTable10.setFont(new Font("Arial", Font.BOLD, 13));
@@ -323,8 +303,6 @@ public class Interface extends JFrame {
 		btnTable10.setOpaque(true);
 		btnTable10.setBounds(414, 195, 20, 20);
 		contentPane.add(btnTable10);
-		btnTable10.setOpaque(true);
-
 		
 		JButton btnTable11 = new JButton("11");
 		btnTable11.setFont(new Font("Arial", Font.BOLD, 13));
@@ -334,8 +312,6 @@ public class Interface extends JFrame {
 		btnTable11.setOpaque(true);
 		btnTable11.setBounds(414, 235, 20, 20);
 		contentPane.add(btnTable11);
-		btnTable11.setOpaque(true);
-
 		
 		JButton btnTable12 = new JButton("12");
 		btnTable12.setFont(new Font("Arial", Font.BOLD, 13));
@@ -345,8 +321,6 @@ public class Interface extends JFrame {
 		btnTable12.setOpaque(true);
 		btnTable12.setBounds(414, 275, 20, 20);
 		contentPane.add(btnTable12);
-		btnTable12.setOpaque(true);
-
 		
 		JButton btnTable13 = new JButton("13");
 		btnTable13.setFont(new Font("Arial", Font.BOLD, 13));
@@ -356,8 +330,6 @@ public class Interface extends JFrame {
 		btnTable13.setOpaque(true);
 		btnTable13.setBounds(414, 315, 20, 20);
 		contentPane.add(btnTable13);
-		btnTable13.setOpaque(true);
-
 		
 		JButton btnTable14 = new JButton("14");
 		btnTable14.setFont(new Font("Arial", Font.BOLD, 13));
@@ -367,8 +339,6 @@ public class Interface extends JFrame {
 		btnTable14.setOpaque(true);
 		btnTable14.setBounds(414, 355, 20, 20);
 		contentPane.add(btnTable14);
-		btnTable14.setOpaque(true);
-
 		
 		JButton btnTable15 = new JButton("15");
 		btnTable15.setFont(new Font("Arial", Font.BOLD, 13));
@@ -378,9 +348,7 @@ public class Interface extends JFrame {
 		btnTable15.setOpaque(true);
 		btnTable15.setBounds(414, 395, 20, 20);
 		contentPane.add(btnTable15);
-		btnTable15.setOpaque(true);
 
-		
 		JButton btnTable16 = new JButton("16");
 		btnTable16.setFont(new Font("Arial", Font.BOLD, 13));
 		btnTable16.setMargin(new Insets(0, 0, 0, 0));
@@ -389,11 +357,89 @@ public class Interface extends JFrame {
 		btnTable16.setOpaque(true);
 		btnTable16.setBounds(414, 435, 20, 20);
 		contentPane.add(btnTable16);
-		btnTable16.setOpaque(true);
+		
+		JButton btnTable17 = new JButton("17");
+		btnTable17.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable17.setBackground(Color.LIGHT_GRAY);
+		btnTable17.setContentAreaFilled(false);
+		btnTable17.setOpaque(true);
+		btnTable17.setBounds(77, 80, 50, 50);
+		contentPane.add(btnTable17);
+		
+		JButton btnTable18 = new JButton("18");
+		btnTable18.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable18.setBackground(Color.LIGHT_GRAY);
+		btnTable18.setContentAreaFilled(false);
+		btnTable18.setOpaque(true);
+		btnTable18.setBounds(77, 180, 50, 50);
+		contentPane.add(btnTable18);
+		
+		JButton btnTable19 = new JButton("19");
+		btnTable19.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable19.setBackground(Color.LIGHT_GRAY);
+		btnTable19.setContentAreaFilled(false);
+		btnTable19.setOpaque(true);
+		btnTable19.setBounds(77, 280, 50, 50);
+		contentPane.add(btnTable19);
+		
+		JButton btnTable20 = new JButton("20");
+		btnTable20.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable20.setBackground(Color.LIGHT_GRAY);
+		btnTable20.setContentAreaFilled(false);
+		btnTable20.setOpaque(true);
+		btnTable20.setBounds(77, 380, 50, 50);
+		contentPane.add(btnTable20);
+		
+		JButton btnTable21 = new JButton("21");
+		btnTable21.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable21.setBackground(Color.LIGHT_GRAY);
+		btnTable21.setContentAreaFilled(false);
+		btnTable21.setOpaque(true);
+		btnTable21.setBounds(597, 80, 50, 50);
+		contentPane.add(btnTable21);
+		
+		JButton btnTable22 = new JButton("22");
+		btnTable22.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable22.setBackground(Color.LIGHT_GRAY);
+		btnTable22.setContentAreaFilled(false);
+		btnTable22.setOpaque(true);
+		btnTable22.setBounds(597, 180, 50, 50);
+		contentPane.add(btnTable22);
+		
+		JButton btnTable23 = new JButton("23");
+		btnTable23.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable23.setBackground(Color.LIGHT_GRAY);
+		btnTable23.setContentAreaFilled(false);
+		btnTable23.setOpaque(true);
+		btnTable23.setBounds(597, 280, 50, 50);
+		contentPane.add(btnTable23);
+
+		JButton btnTable24 = new JButton("24");
+		btnTable24.setFont(new Font("Arial", Font.BOLD, 13));
+		btnTable24.setBackground(Color.LIGHT_GRAY);
+		btnTable24.setContentAreaFilled(false);
+		btnTable24.setOpaque(true);
+		btnTable24.setBounds(597, 380, 50, 50);
+		contentPane.add(btnTable24);
 		
 		JLabel imgSalle = new JLabel("");
 		imgSalle.setIcon(new ImageIcon("D:\\Eclipse-Workspace\\DevoirModelisation\\images\\InterfaceSalle.png"));
 		imgSalle.setBounds(0, 48, 725, 435);
 		contentPane.add(imgSalle);
+		
+		/*
+		class nouvelEtat implements ActionListener{
+			public void actionPerformed(ActionEvent etatClique) {
+				if (etatClique.getSource() == btnLibre) {
+					etatChoisi = "Libre";
+					
+				}
+				
+			}
+			
+		}
+		 */
 	}
+		
+	
 }
