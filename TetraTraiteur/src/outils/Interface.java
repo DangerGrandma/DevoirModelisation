@@ -2,11 +2,15 @@ package outils;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultCaret;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Window.Type;
 import java.awt.Color;
@@ -16,46 +20,43 @@ import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
+
 import java.awt.SystemColor;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.DropMode;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JRadioButton;
+import java.awt.Dimension;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.JDesktopPane;
+import java.awt.Button;
 
 public class Interface extends JFrame {
 
-	private JPanel contentPane;
-	private static boolean btnsActives = false;
-	//private static String etatChoisi = "";
-	private static JButton boutonActuel;
+	private JPanel contentPane; // Paneau d'affichage principal.
+	private static boolean btnsActives = false;  // Variable qui permet d'afficher les boutons d'état de table. 
+	private static JButton boutonActuel; // Variable utilisée pour déterminer quel table a été sélectionnée pour modification.
 	
-
-
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Interface frame = new Interface();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Interface() {
+		
+		// Création de la  fenêtre de l'application.
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 862, 522);
@@ -65,11 +66,18 @@ public class Interface extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// Création de la banière du haut.
+		
 		JPanel DiviseurHaut = new JPanel();
 		DiviseurHaut.setBounds(0, 0, 728, 48);
 		DiviseurHaut.setBackground(Color.GREEN);
 		contentPane.add(DiviseurHaut);
 		DiviseurHaut.setLayout(null);
+		
+		/*
+		 *  Création du bouton de changement d'état de table à "Libre". La table choisie en @param boutonActuel devient Libre,
+		 *  puis @param boutonActuel se vide afin de limiter les opérations et requiert une nouvelle sélection pour autres modifications.
+		 */
 		
 		JButton btnLibre = new JButton("");
 		btnLibre.addActionListener(new ActionListener() {
@@ -79,11 +87,15 @@ public class Interface extends JFrame {
 				boutonActuel = null;
 			}
 		});
-
 		btnLibre.setIcon(new ImageIcon(Interface.class.getResource("/imgs/button_libre.png")));
 		btnLibre.setBounds(312, 11, 94, 29);
 		DiviseurHaut.add(btnLibre);
 		btnLibre.setVisible(false);
+		
+		/*
+		 *  Création du bouton de changement d'état de table à "Occupée". La table choisie en @param boutonActuel devient Occupée,
+		 *  puis @param boutonActuel se vide afin de limiter les opérations et requiert une nouvelle sélection pour autres modifications.
+		 */
 		
 		JButton btnOccupee = new JButton("");
 		btnOccupee.addActionListener(new ActionListener() {
@@ -93,11 +105,15 @@ public class Interface extends JFrame {
 				boutonActuel = null;
 			}
 		});
-
 		btnOccupee.setIcon(new ImageIcon(Interface.class.getResource("/imgs/button_occupee.png")));
 		btnOccupee.setBounds(416, 11, 94, 29);
 		DiviseurHaut.add(btnOccupee);
 		btnOccupee.setVisible(false);
+		
+		/*
+		 *  Création du bouton de changement d'état de table à "À Débarrasser". La table choisie en @param boutonActuel devient À Débarrasser,
+		 *  puis @param boutonActuel se vide afin de limiter les opérations et requiert une nouvelle sélection pour autres modifications.
+		 */
 		
 		JButton btnDebarrasser = new JButton("");
 		btnDebarrasser.addActionListener(new ActionListener() {
@@ -107,11 +123,15 @@ public class Interface extends JFrame {
 				boutonActuel = null;
 			}
 		});
-
 		btnDebarrasser.setIcon(new ImageIcon(Interface.class.getResource("/imgs/button_a-debarrasser.png")));
 		btnDebarrasser.setBounds(520, 11, 94, 29);
 		DiviseurHaut.add(btnDebarrasser);
 		btnDebarrasser.setVisible(false);
+		
+		/*
+		 *  Création du bouton de changement d'état de table à "Autre Serveur". La table choisie en @param boutonActuel devient Autre Serveur,
+		 *  puis @param boutonActuel se vide afin de limiter les opérations et requiert une nouvelle sélection pour autres modifications.
+		 */
 		
 		JButton btnAutreServeur = new JButton("");
 		btnAutreServeur.addActionListener(new ActionListener() {
@@ -121,11 +141,12 @@ public class Interface extends JFrame {
 				boutonActuel = null;
 			}
 		});
-
 		btnAutreServeur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/button_autre-serveur.png")));
 		btnAutreServeur.setBounds(624, 11, 94, 29);
 		DiviseurHaut.add(btnAutreServeur);
 		btnAutreServeur.setVisible(false);
+		
+		// Création d'une metion de la table choisie pour les modification à apporter.
 		
 		JButton btnTableSaisie = new JButton("Table#");
 		btnTableSaisie.setBounds(22, 13, 89, 23);
@@ -135,6 +156,8 @@ public class Interface extends JFrame {
 		DiviseurHaut.add(btnTableSaisie);
 		btnTableSaisie.setVisible(false);
 		
+		// Création d'un Label qui indique à l'utilisateur de choisir une table à modifier, puis son nouvel état.
+		
 		JLabel lblModTable = new JLabel("Choisir Table + État");
 		lblModTable.setFont(new Font("Arial", Font.BOLD, 12));
 		lblModTable.setHorizontalAlignment(SwingConstants.CENTER);
@@ -142,10 +165,14 @@ public class Interface extends JFrame {
 		DiviseurHaut.add(lblModTable);
 		lblModTable.setVisible(false);
 		
+		// Image utilisée pour la banière du haut.
+		
 		JLabel imgDiviseurHaut = new JLabel("");
 		imgDiviseurHaut.setBounds(0, 0, 728, 48);
 		imgDiviseurHaut.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(inactif).jpg")));
 		DiviseurHaut.add(imgDiviseurHaut);
+		
+		// Création de la banière de droite
 		
 		JPanel DiviseurDroite = new JPanel();
 		DiviseurDroite.setBounds(727, 0, 119, 483);
@@ -153,11 +180,15 @@ public class Interface extends JFrame {
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 		
+		// Création d'un paneau qui contient des données relatives à l'utilisateur actuel
+		
 		JPanel PaneauUtilisateur = new JPanel();
 		PaneauUtilisateur.setBounds(0, 0, 119, 47);
 		DiviseurDroite.add(PaneauUtilisateur);
 		PaneauUtilisateur.setBackground(Color.YELLOW);
 		PaneauUtilisateur.setLayout(null);
+		
+		// Création d'un Label qui affiche ces informations
 		
 		JLabel boxUtilisateur = new JLabel("Utilisateur");
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
@@ -165,11 +196,15 @@ public class Interface extends JFrame {
 		boxUtilisateur.setBounds(10, 11, 99, 25);
 		PaneauUtilisateur.add(boxUtilisateur);
 		
+		// Image utilisée pour le paneau utilisateur.
+		
 		JLabel imgUtilisateur = new JLabel("");
 		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
 		imgUtilisateur.setBounds(0, 0, 119, 47);
 		PaneauUtilisateur.add(imgUtilisateur);
 		imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
+		
+		// Création d'un paneau où sont affichées les informations relatives au temps.
 		
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -177,7 +212,11 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(PaneauTemps);
 		PaneauTemps.setLayout(null);
 		
+		// Création d'un objet qui prend en compte les données relatives au temps actuel (synchronisation à l'ordinateur).
+		
 		LocalDateTime dateHeure = LocalDateTime.now();
+		
+		// Création d'un Label qui afficher le temps actuel selon un format mois, jour et année.
 		
 		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
 		JLabel boxTempsJour = new JLabel("" +dtfJour.format(dateHeure));
@@ -185,21 +224,22 @@ public class Interface extends JFrame {
 		boxTempsJour.setBounds(12, 11, 99, 29);
 		PaneauTemps.add(boxTempsJour);
 		
+		// Création d'une Label qui affiche le temps actuel selon un format heure et minutes.
+		
 		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
 		JLabel lblNewLabel = new JLabel(""+dtfHeure.format(dateHeure));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(37, 35, 46, 14);
 		PaneauTemps.add(lblNewLabel);
-
 		
-		JLabel boxTemps = new JLabel("");
-		boxTemps.setBounds(37, 26, 46, 14);
-		PaneauTemps.add(boxTemps);
+		// Image utilisée pour la banière du temps.
 		
 		JLabel imgTemps = new JLabel("");
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
 		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
+		
+		// Création du bouton pour invoquer une fenêtre des archives.
 		
 		JButton btnArchive = new JButton("");
 		btnArchive.setForeground(SystemColor.desktop);
@@ -208,6 +248,8 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(btnArchive);
 		btnArchive.setIcon(new ImageIcon(Interface.class.getResource("/imgs/btnArchive.png")));
 		
+		// Création du bouton pour changer d'utilisateur.
+		
 		JButton btnUtilisateur = new JButton("");
 		btnUtilisateur.setForeground(SystemColor.desktop);
 		btnUtilisateur.setBackground(SystemColor.desktop);
@@ -215,9 +257,20 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(btnUtilisateur);
 		btnUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/btnChange.png")));
 		
+		// Création du bouton pour modifier l'état d'une table.
+		
 		JButton btnModTable = new JButton("");
 		btnModTable.addActionListener(new ActionListener() {
+			
+			/*
+			 * Lorsque ce bouton est activé, on vérifie d'abord si la modification des tables est permise ou non. Son état est alors changé à son inverse,
+			 * et l'interface est modifié de façon à respecter cet état; l'image de la banière du haut change en conséquence, tout comme la possibilité 
+			 * de modifier l'état des tables.
+			 */
+			
 			public void actionPerformed(ActionEvent e) {
+				
+				// Si modification permise.
 				
 				if(btnsActives) {
 					btnsActives = false;
@@ -229,6 +282,8 @@ public class Interface extends JFrame {
 					btnTableSaisie.setVisible(false);
 					lblModTable.setVisible(false);
 				}
+				
+				// Si modification n'est pas permise.
 				
 				else {
 					btnsActives = true;
@@ -249,13 +304,19 @@ public class Interface extends JFrame {
 		btnModTable.setForeground(SystemColor.desktop);
 		btnModTable.setBackground(SystemColor.desktop);
 		
+		// Image utilisée pour la banière de droite.
+		
 		JLabel imgDiviseurDroite = new JLabel("New label");
 		imgDiviseurDroite.setBounds(0, 118, 119, 365);
 		DiviseurDroite.add(imgDiviseurDroite);
 		imgDiviseurDroite.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Bannerdroite.PNG")));
 	
 		
-		// Boutons pour les tables de 1 à 24
+		/* 
+		 * Boutons pour les tables de 1 à 24. Lorsque @param btnsActives est True, on peut intéragir avec les tables pour les modifier.
+		 * La table sélectionnée en @param boutonActuel peut alors changer d'état ou être consultée et changée. Cette table est d'ailleurs
+		 * affichée en haut à gauche comme état sélectionnée et prête à toute modification.
+		 */
 				
 		JButton btnTable1 = new JButton("1");
 		btnTable1.addActionListener(new ActionListener() {
@@ -681,24 +742,21 @@ public class Interface extends JFrame {
 		btnTable24.setBounds(597, 380, 50, 50);
 		contentPane.add(btnTable24);
 		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				WindowUtilisateurs WU = new WindowUtilisateurs();
+				WU.afficherUtil();
+			}
+		});
+		btnNewButton.setBounds(303, 94, 89, 23);
+		contentPane.add(btnNewButton);
+		
 		JLabel imgSalle = new JLabel("");
 		imgSalle.setIcon(new ImageIcon(Interface.class.getResource("/imgs/InterfaceSalle.png")));
 		imgSalle.setBounds(0, 48, 725, 435);
-		contentPane.add(imgSalle);
-		
-		/*
-		class nouvelEtat implements ActionListener{
-			public void actionPerformed(ActionEvent etatClique) {
-				if (etatClique.getSource() == btnLibre) {
-					etatChoisi = "Libre";
-					
-				}
-				
-			}
-			
-		}
-		 */
+		contentPane.add(imgSalle);		
 	}
-		
+	
 	
 }
