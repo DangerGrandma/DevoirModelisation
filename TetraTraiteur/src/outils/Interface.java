@@ -52,6 +52,7 @@ public class Interface extends JFrame {
 	private JPanel contentPane; // Paneau d'affichage principal.
 	private static boolean btnsActives = false;  // Variable qui permet d'afficher les boutons d'état de table. 
 	private static JButton boutonActuel; // Variable utilisée pour déterminer quel table a été sélectionnée pour modification.
+	private static boolean btnsClients = false;  // Variable qui permet d'afficher les boutons des clients d'une table. 
 	
 	
 	public Interface() {
@@ -80,6 +81,10 @@ public class Interface extends JFrame {
 		 */
 		
 		JButton btnLibre = new JButton("");
+		btnLibre.setIcon(new ImageIcon(Interface.class.getResource("/imgs/button_libre.png")));
+		btnLibre.setBounds(312, 11, 94, 29);		
+		DiviseurHaut.add(btnLibre);
+		btnLibre.setVisible(false);
 		btnLibre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(boutonActuel != null)
@@ -87,10 +92,9 @@ public class Interface extends JFrame {
 				boutonActuel = null;
 			}
 		});
-		btnLibre.setIcon(new ImageIcon(Interface.class.getResource("/imgs/button_libre.png")));
-		btnLibre.setBounds(312, 11, 94, 29);
-		DiviseurHaut.add(btnLibre);
-		btnLibre.setVisible(false);
+		
+
+
 		
 		/*
 		 *  Création du bouton de changement d'état de table à "Occupée". La table choisie en @param boutonActuel devient Occupée,
@@ -149,7 +153,7 @@ public class Interface extends JFrame {
 		// Création d'une metion de la table choisie pour les modification à apporter.
 		
 		JButton btnTableSaisie = new JButton("Table#");
-		btnTableSaisie.setBounds(22, 13, 89, 23);
+		btnTableSaisie.setBounds(15, 11, 89, 23);
 		btnTableSaisie.setContentAreaFilled(false);
 		btnTableSaisie.setOpaque(true);
 		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
@@ -161,7 +165,7 @@ public class Interface extends JFrame {
 		JLabel lblModTable = new JLabel("Choisir Table + État");
 		lblModTable.setFont(new Font("Arial", Font.BOLD, 12));
 		lblModTable.setHorizontalAlignment(SwingConstants.CENTER);
-		lblModTable.setBounds(121, 18, 125, 14);
+		lblModTable.setBounds(114, 18, 125, 14);
 		DiviseurHaut.add(lblModTable);
 		lblModTable.setVisible(false);
 		
@@ -310,6 +314,10 @@ public class Interface extends JFrame {
 		imgDiviseurDroite.setBounds(0, 118, 119, 365);
 		DiviseurDroite.add(imgDiviseurDroite);
 		imgDiviseurDroite.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Bannerdroite.PNG")));
+		
+		JButton btnClientsTable = new JButton("Clients table");
+		btnClientsTable.setBounds(24, 149, 85, 21);
+		DiviseurDroite.add(btnClientsTable);
 	
 		
 		/* 
@@ -742,21 +750,51 @@ public class Interface extends JFrame {
 		btnTable24.setBounds(597, 380, 50, 50);
 		contentPane.add(btnTable24);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Utilisateur");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WindowUtilisateurs WU = new WindowUtilisateurs();
 				WU.afficherUtil();
 			}
 		});
-		btnNewButton.setBounds(303, 94, 89, 23);
+		btnNewButton.setBounds(318, 107, 89, 23);
 		contentPane.add(btnNewButton);
-		
+
 		JLabel imgSalle = new JLabel("");
 		imgSalle.setIcon(new ImageIcon(Interface.class.getResource("/imgs/InterfaceSalle.png")));
 		imgSalle.setBounds(0, 48, 725, 435);
-		contentPane.add(imgSalle);		
+		contentPane.add(imgSalle);
+				
+		JButton btnClient1 = new JButton("Client 1");
+		btnClient1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnClient1.setBounds(154, 95, 102, 50);
+		contentPane.add(btnClient1);
+		
+		JButton btnClient2 = new JButton("Client 2");
+		btnClient2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnClient2.setBounds(154, 205, 102, 50);
+		contentPane.add(btnClient2);
+		
+		JButton btnClient3 = new JButton("Client 3");
+		btnClient3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnClient3.setBounds(154, 325, 102, 50);
+		contentPane.add(btnClient3);
+		
+		JButton btnClient4 = new JButton("Client 1");
+		btnClient4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnClient4.setBounds(485, 95, 102, 50);
+		contentPane.add(btnClient4);
+		
+		JButton btnClient5 = new JButton("Client 2");
+		btnClient5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnClient5.setBounds(485, 205, 102, 50);
+		contentPane.add(btnClient5);
+		
+		JButton btnClient6 = new JButton("Client 3");
+		btnClient6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnClient6.setBounds(485, 325, 102, 50);
+		contentPane.add(btnClient6);
+
+
 	}
-	
-	
 }
