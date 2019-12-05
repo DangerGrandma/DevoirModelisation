@@ -22,6 +22,8 @@ import javax.swing.JSlider;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
+import javax.swing.JTextField;
+import javax.swing.JTable;
 
 public class InterfaceC extends JFrame {
 
@@ -49,268 +51,414 @@ public class InterfaceC extends JFrame {
 	public InterfaceC() {
 		// Création de la fenêtre de l'application.
 
-				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				setBounds(100, 100, 862, 522);
-				contentPane = new JPanel();
-				contentPane.setForeground(Color.BLACK);
-				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-				setContentPane(contentPane);
-				contentPane.setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 862, 522);
+		contentPane = new JPanel();
+		contentPane.setForeground(Color.BLACK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
-				// Création de la banière du haut.
+		// Création de la banière du haut.
 
-				JPanel DiviseurHaut = new JPanel();
-				DiviseurHaut.setBounds(0, 0, 728, 48);
-				DiviseurHaut.setBackground(new Color(128, 128, 128));
-				contentPane.add(DiviseurHaut);
-				DiviseurHaut.setLayout(null);
+		JPanel DiviseurHaut = new JPanel();
+		DiviseurHaut.setBounds(0, 0, 728, 48);
+		DiviseurHaut.setBackground(new Color(128, 128, 128));
+		contentPane.add(DiviseurHaut);
+		DiviseurHaut.setLayout(null);
 
-				// Création de la banière de droite
+		// Création de la banière de droite
 
-				JPanel DiviseurDroite = new JPanel();
-				DiviseurDroite.setBounds(727, 0, 119, 483);
-				DiviseurDroite.setBackground(new Color(128, 128, 128));
-				contentPane.add(DiviseurDroite);
-				DiviseurDroite.setLayout(null);
+		JPanel DiviseurDroite = new JPanel();
+		DiviseurDroite.setBounds(727, 0, 119, 483);
+		DiviseurDroite.setBackground(new Color(128, 128, 128));
+		contentPane.add(DiviseurDroite);
+		DiviseurDroite.setLayout(null);
 
-				// Création d'un paneau qui contient des données relatives à l'utilisateur
-				// actuel
+		// Création d'un paneau qui contient des données relatives à l'utilisateur
+		// actuel
 
-				JPanel PaneauUtilisateur = new JPanel();
-				PaneauUtilisateur.setBounds(0, 0, 119, 47);
-				DiviseurDroite.add(PaneauUtilisateur);
-				PaneauUtilisateur.setBackground(Color.YELLOW);
-				PaneauUtilisateur.setLayout(null);
+		JPanel PaneauUtilisateur = new JPanel();
+		PaneauUtilisateur.setBounds(0, 0, 119, 47);
+		DiviseurDroite.add(PaneauUtilisateur);
+		PaneauUtilisateur.setBackground(Color.YELLOW);
+		PaneauUtilisateur.setLayout(null);
 
-				// Création d'un Label qui affiche ces informations
+		// Création d'un Label qui affiche ces informations
 
-				JLabel boxUtilisateur = new JLabel("Utilisateur");
-				boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
-				boxUtilisateur.setFont(new Font("Tahoma", Font.BOLD, 11));
-				boxUtilisateur.setBounds(10, 11, 99, 25);
-				PaneauUtilisateur.add(boxUtilisateur);
+		JLabel boxUtilisateur = new JLabel("Utilisateur");
+		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
+		boxUtilisateur.setFont(new Font("Tahoma", Font.BOLD, 11));
+		boxUtilisateur.setBounds(10, 11, 99, 25);
+		PaneauUtilisateur.add(boxUtilisateur);
 
-				// Image utilisée pour le paneau utilisateur.
+		// Image utilisée pour le paneau utilisateur.
 
-				JLabel imgUtilisateur = new JLabel("");
-				imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
-				imgUtilisateur.setBounds(0, 0, 119, 47);
-				PaneauUtilisateur.add(imgUtilisateur);
-				imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
+		JLabel imgUtilisateur = new JLabel("");
+		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
+		imgUtilisateur.setBounds(0, 0, 119, 47);
+		PaneauUtilisateur.add(imgUtilisateur);
+		imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
 
-				// Création d'un paneau où sont affichées les informations relatives au temps.
+		// Création d'un paneau où sont affichées les informations relatives au temps.
 
-				JPanel PaneauTemps = new JPanel();
-				PaneauTemps.setBackground(Color.PINK);
-				PaneauTemps.setBounds(0, 47, 119, 71);
-				DiviseurDroite.add(PaneauTemps);
-				PaneauTemps.setLayout(null);
+		JPanel PaneauTemps = new JPanel();
+		PaneauTemps.setBackground(Color.PINK);
+		PaneauTemps.setBounds(0, 47, 119, 71);
+		DiviseurDroite.add(PaneauTemps);
+		PaneauTemps.setLayout(null);
 
-				// Création d'un objet qui prend en compte les données relatives au temps actuel
-				// (synchronisation à l'ordinateur).
+		// Création d'un objet qui prend en compte les données relatives au temps actuel
+		// (synchronisation à l'ordinateur).
 
-				LocalDateTime dateHeure = LocalDateTime.now();
+		LocalDateTime dateHeure = LocalDateTime.now();
 
-				// Création d'un Label qui afficher le temps actuel selon un format mois, jour
-				// et année.
+		// Création d'un Label qui afficher le temps actuel selon un format mois, jour
+		// et année.
 
-				DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
-				JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
-				boxTempsJour.setFont(new Font("Tahoma", Font.BOLD, 13));
-				boxTempsJour.setBounds(12, 11, 99, 29);
-				PaneauTemps.add(boxTempsJour);
+		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
+		JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
+		boxTempsJour.setFont(new Font("Tahoma", Font.BOLD, 13));
+		boxTempsJour.setBounds(12, 11, 99, 29);
+		PaneauTemps.add(boxTempsJour);
 
-				// Création d'une Label qui affiche le temps actuel selon un format heure et
-				// minutes.
+		// Création d'une Label qui affiche le temps actuel selon un format heure et
+		// minutes.
 
-				DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
-				JLabel lblNewLabel = new JLabel("" + dtfHeure.format(dateHeure));
-				lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-				lblNewLabel.setBounds(37, 35, 46, 14);
-				PaneauTemps.add(lblNewLabel);
+		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
+		JLabel lblNewLabel = new JLabel("" + dtfHeure.format(dateHeure));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(37, 35, 46, 14);
+		PaneauTemps.add(lblNewLabel);
 
-				// Image utilisée pour la banière du temps.
+		// Image utilisée pour la banière du temps.
 
-				JLabel imgTemps = new JLabel("");
-				imgTemps.setBounds(0, 0, 119, 71);
-				PaneauTemps.add(imgTemps);
-				imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
-				
+		JLabel imgTemps = new JLabel("");
+		imgTemps.setBounds(0, 0, 119, 71);
+		PaneauTemps.add(imgTemps);
+		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
 
-				
-				//Création du bouton qui confirme le "panier" de la commande et qui retourne à l'interface B_1
-				
-				JButton btnConfirmer = new JButton("Confirmer");
-				btnConfirmer.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				btnConfirmer.setBackground(new Color(50, 205, 50));
-				btnConfirmer.setBounds(0, 360, 119, 52);
-				DiviseurDroite.add(btnConfirmer);
-				btnConfirmer.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String cmd = e.getActionCommand();
+		// Création du bouton Retour qui amène l'utlisateur à l'interface B.
 
-						if (cmd.equals("Confirmer")) {
-							dispose();
+		JButton btnRetour = new JButton("RETOUR");
+		btnRetour.setForeground(Color.WHITE);
+		btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnRetour.setBackground(new Color(0, 0, 128));
+		btnRetour.setBounds(7, 11, 94, 29);
+		DiviseurHaut.add(btnRetour);
+		btnRetour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cmd = e.getActionCommand();
 
-							new InterfaceB_1().setVisible(true);
-						}
+				if (cmd.equals("RETOUR")) {
+					dispose();
 
-					}
-				});
-				
-				// Création du bouton Retour qui amène l'utlisateur à l'interface B.
+					new InterfaceB_1().setVisible(true);
+				}
 
-				JButton btnRetour = new JButton("RETOUR");
-				btnRetour.setForeground(Color.WHITE);
-				btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 15));
-				btnRetour.setBackground(new Color(0, 0, 128));
-				btnRetour.setBounds(7, 11, 94, 29);
-				DiviseurHaut.add(btnRetour);
-				btnRetour.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String cmd = e.getActionCommand();
+			}
+		});
 
-						if (cmd.equals("RETOUR")) {
-							dispose();
+		// Menu
 
-							new InterfaceB_1().setVisible(true);
-						}
+		JCheckBoxMenuItem menuSalade = new JCheckBoxMenuItem("Salade");
+		menuSalade.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuSalade.setBounds(10, 121, 133, 24);
+		contentPane.add(menuSalade);
+		menuSalade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuSalade.isSelected()) {
+					menuSalade.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuSalade.setBackground(null);
+				}
+			}
 
-					}
-				});
-				
-				// Création de la liste des items sélectionnés
-				JTextArea ListeItem = new JTextArea();
-				ListeItem.setBounds(10, 362, 705, 113);
-				contentPane.add(ListeItem);
-				
+		});
 
-				// Menu
-				
-				JCheckBoxMenuItem menuSalade = new JCheckBoxMenuItem("Salade");
-				menuSalade.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuSalade.setBounds(10, 89, 133, 24);
-				contentPane.add(menuSalade);
-				menuSalade.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (menuSalade.isSelected()) {
-							ListeItem.append("\nSalade");
-						}
-						else {
-							
-						}
-					}
-				});
-				
-				JCheckBoxMenuItem menuSoupe = new JCheckBoxMenuItem("Soupe");
-				menuSoupe.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuSoupe.setBounds(10, 162, 133, 24);
-				contentPane.add(menuSoupe);
-			
-				menuSoupe.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (menuSoupe.isSelected()) {
-				
-							ListeItem.append("\nSoupe");
-						}
-						else {
-							ListeItem.setText("");
-						}
-					}
-					
-				});
-				
-				JCheckBoxMenuItem menuBruschetta = new JCheckBoxMenuItem("Bruschetta");
-				menuBruschetta.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuBruschetta.setBounds(10, 238, 133, 24);
-				contentPane.add(menuBruschetta);
-				
-				JCheckBoxMenuItem MenuSaumon = new JCheckBoxMenuItem("Saumon aux herbes");
-				MenuSaumon.setFont(new Font("Tahoma", Font.BOLD, 14));
-				MenuSaumon.setBounds(153, 89, 178, 24);
-				contentPane.add(MenuSaumon);
-				
-				JCheckBoxMenuItem menuPoulet = new JCheckBoxMenuItem("Poulet au citon");
-				menuPoulet.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuPoulet.setBounds(153, 162, 178, 24);
-				contentPane.add(menuPoulet);
-				
-				JCheckBoxMenuItem menuBLT = new JCheckBoxMenuItem("BLT");
-				menuBLT.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuBLT.setBounds(153, 238, 178, 24);
-				contentPane.add(menuBLT);
-				
-				JCheckBoxMenuItem menuTofu = new JCheckBoxMenuItem("Tofu Frit");
-				menuTofu.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuTofu.setBounds(153, 316, 178, 24);
-				contentPane.add(menuTofu);
-				
-				JCheckBoxMenuItem menuSpaghetti = new JCheckBoxMenuItem("Spaghetti a l'encre");
-				menuSpaghetti.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuSpaghetti.setBounds(341, 89, 189, 24);
-				contentPane.add(menuSpaghetti);
-				
-				JCheckBoxMenuItem menuRisotto = new JCheckBoxMenuItem("Risotto aux Champignons");
-				menuRisotto.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuRisotto.setBounds(341, 162, 218, 24);
-				contentPane.add(menuRisotto);
-				
-				JCheckBoxMenuItem menuHomard = new JCheckBoxMenuItem("Assiette Homard");
-				menuHomard.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuHomard.setBounds(341, 238, 179, 24);
-				contentPane.add(menuHomard);
-				
-				JCheckBoxMenuItem menuBurger = new JCheckBoxMenuItem("Burger Vege");
-				menuBurger.setFont(new Font("Tahoma", Font.BOLD, 14));
-				menuBurger.setBounds(341, 316, 179, 24);
-				contentPane.add(menuBurger);
-				
-				JCheckBoxMenuItem Cafe = new JCheckBoxMenuItem("Cafe");
-				Cafe.setFont(new Font("Tahoma", Font.BOLD, 14));
-				Cafe.setBounds(569, 89, 159, 24);
-				contentPane.add(Cafe);
-				
-				JCheckBoxMenuItem BoissonGazeuse = new JCheckBoxMenuItem("Boisson Gazeuse");
-				BoissonGazeuse.setFont(new Font("Tahoma", Font.BOLD, 14));
-				BoissonGazeuse.setBounds(569, 162, 159, 24);
-				contentPane.add(BoissonGazeuse);
-				
-				JCheckBoxMenuItem Limonade = new JCheckBoxMenuItem("Limonade");
-				Limonade.setFont(new Font("Tahoma", Font.BOLD, 14));
-				Limonade.setBounds(569, 238, 159, 24);
-				contentPane.add(Limonade);
-				
-				JCheckBoxMenuItem The = new JCheckBoxMenuItem("The");
-				The.setFont(new Font("Tahoma", Font.BOLD, 14));
-				The.setBounds(569, 316, 159, 24);
-				contentPane.add(The);
-				
-				//Création du bouton annuler la commande, qui efface tout ce qu'il y a dans la liste de la commande
-				
-				JButton btnAnnuler = new JButton("Annuler");
-				btnAnnuler.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				btnAnnuler.setBackground(new Color(50, 205, 50));
-				btnAnnuler.setBounds(0, 271, 119, 52);
-				DiviseurDroite.add(btnAnnuler);
-				btnAnnuler.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String cmd = e.getActionCommand();
+		JCheckBoxMenuItem menuSoupe = new JCheckBoxMenuItem("Soupe");
+		menuSoupe.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuSoupe.setBounds(10, 194, 133, 24);
+		contentPane.add(menuSoupe);
+		menuSoupe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuSoupe.isSelected()) {
+					menuSoupe.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuSoupe.setBackground(null);
+				}
+			}
 
-						if (cmd.equals("Annuler")) {						
-							ListeItem.setText("");
-							menuSalade.setSelected(false);
-							menuSoupe.setSelected(false);
-							
-						}
-				
-						
-					}
-		
-				});
-				
-				
-				
-	
+		});
+
+		JCheckBoxMenuItem menuBruschetta = new JCheckBoxMenuItem("Bruschetta");
+		menuBruschetta.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuBruschetta.setBounds(10, 270, 133, 24);
+		contentPane.add(menuBruschetta);
+		menuBruschetta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuBruschetta.isSelected()) {
+					menuBruschetta.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuBruschetta.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem MenuSaumon = new JCheckBoxMenuItem("Saumon aux herbes");
+		MenuSaumon.setFont(new Font("Tahoma", Font.BOLD, 14));
+		MenuSaumon.setBounds(153, 121, 178, 24);
+		contentPane.add(MenuSaumon);
+		MenuSaumon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (MenuSaumon.isSelected()) {
+					MenuSaumon.setBackground(Color.LIGHT_GRAY);
+				} else {
+					MenuSaumon.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem menuPoulet = new JCheckBoxMenuItem("Poulet au citon");
+		menuPoulet.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuPoulet.setBounds(153, 194, 178, 24);
+		contentPane.add(menuPoulet);
+		menuPoulet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuPoulet.isSelected()) {
+					menuPoulet.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuPoulet.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem menuBLT = new JCheckBoxMenuItem("BLT");
+		menuBLT.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuBLT.setBounds(153, 270, 178, 24);
+		contentPane.add(menuBLT);
+		menuBLT.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuBLT.isSelected()) {
+					menuBLT.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuBLT.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem menuTofu = new JCheckBoxMenuItem("Tofu Frit");
+		menuTofu.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuTofu.setBounds(153, 348, 178, 24);
+		contentPane.add(menuTofu);
+		menuTofu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuTofu.isSelected()) {
+					menuTofu.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuTofu.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem menuSpaghetti = new JCheckBoxMenuItem("Spaghetti a l'encre");
+		menuSpaghetti.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuSpaghetti.setBounds(341, 121, 189, 24);
+		contentPane.add(menuSpaghetti);
+		menuSpaghetti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuSpaghetti.isSelected()) {
+					menuSpaghetti.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuSpaghetti.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem menuRisotto = new JCheckBoxMenuItem("Risotto aux Champignons");
+		menuRisotto.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuRisotto.setBounds(341, 194, 218, 24);
+		contentPane.add(menuRisotto);
+		menuRisotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuRisotto.isSelected()) {
+					menuRisotto.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuRisotto.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem menuHomard = new JCheckBoxMenuItem("Assiette Homard");
+		menuHomard.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuHomard.setBounds(341, 270, 179, 24);
+		contentPane.add(menuHomard);
+		menuHomard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuHomard.isSelected()) {
+					menuHomard.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuHomard.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem menuBurger = new JCheckBoxMenuItem("Burger Vege");
+		menuBurger.setFont(new Font("Tahoma", Font.BOLD, 14));
+		menuBurger.setBounds(341, 348, 179, 24);
+		contentPane.add(menuBurger);
+		menuBurger.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (menuBurger.isSelected()) {
+					menuBurger.setBackground(Color.LIGHT_GRAY);
+				} else {
+					menuBurger.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem Cafe = new JCheckBoxMenuItem("Cafe");
+		Cafe.setFont(new Font("Tahoma", Font.BOLD, 14));
+		Cafe.setBounds(569, 121, 148, 24);
+		contentPane.add(Cafe);
+		Cafe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Cafe.isSelected()) {
+					Cafe.setBackground(Color.LIGHT_GRAY);
+				} else {
+					Cafe.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem BoissonGazeuse = new JCheckBoxMenuItem("Boisson Gazeuse");
+		BoissonGazeuse.setFont(new Font("Tahoma", Font.BOLD, 14));
+		BoissonGazeuse.setBounds(569, 194, 153, 24);
+		contentPane.add(BoissonGazeuse);
+		BoissonGazeuse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (BoissonGazeuse.isSelected()) {
+					BoissonGazeuse.setBackground(Color.LIGHT_GRAY);
+				} else {
+					BoissonGazeuse.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem Limonade = new JCheckBoxMenuItem("Limonade");
+		Limonade.setFont(new Font("Tahoma", Font.BOLD, 14));
+		Limonade.setBounds(569, 270, 148, 24);
+		contentPane.add(Limonade);
+		Limonade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Limonade.isSelected()) {
+					Limonade.setBackground(Color.LIGHT_GRAY);
+				} else {
+					Limonade.setBackground(null);
+				}
+			}
+
+		});
+
+		JCheckBoxMenuItem The = new JCheckBoxMenuItem("The");
+		The.setFont(new Font("Tahoma", Font.BOLD, 14));
+		The.setBounds(569, 348, 148, 24);
+		contentPane.add(The);
+		The.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (The.isSelected()) {
+					The.setBackground(Color.LIGHT_GRAY);
+				} else {
+					The.setBackground(null);
+				}
+			}
+
+		});
+
+		// Création du bouton annuler la commande, qui efface tout ce qu'il y a dans la
+		// liste de la commande
+
+		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAnnuler.setBackground(new Color(50, 205, 50));
+		btnAnnuler.setBounds(0, 359, 119, 52);
+		DiviseurDroite.add(btnAnnuler);
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cmd = e.getActionCommand();
+
+				if (cmd.equals("Annuler")) {
+					menuSalade.setSelected(false);
+					menuSoupe.setSelected(false);
+					menuBruschetta.setSelected(false);
+					MenuSaumon.setSelected(false);
+					menuPoulet.setSelected(false);
+					menuBLT.setSelected(false);
+					menuTofu.setSelected(false);
+					menuSpaghetti.setSelected(false);
+					menuRisotto.setSelected(false);
+					menuHomard.setSelected(false);
+					menuBurger.setSelected(false);
+					Cafe.setSelected(false);
+					BoissonGazeuse.setSelected(false);
+					Limonade.setSelected(false);
+					The.setSelected(false);
+					menuSalade.setBackground(null);
+					menuSoupe.setBackground(null);
+					menuBruschetta.setBackground(null);
+					MenuSaumon.setBackground(null);
+					menuPoulet.setBackground(null);
+					menuSpaghetti.setBackground(null);
+					menuRisotto.setBackground(null);
+					menuHomard.setBackground(null);
+					menuBurger.setBackground(null);
+					Cafe.setBackground(null);
+					BoissonGazeuse.setBackground(null);
+					Limonade.setBackground(null);
+					The.setBackground(null);
+				}
+
+			}
+
+		});
+
+		// Création du bouton qui confirme le "panier" de la commande et qui retourne à
+		// l'interface B_1
+
+		JButton btnConfirmer = new JButton("Confirmer");
+		btnConfirmer.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnConfirmer.setBackground(new Color(50, 205, 50));
+		btnConfirmer.setBounds(0, 421, 119, 52);
+		DiviseurDroite.add(btnConfirmer);
+
+		JButton btnModArticle = new JButton("Modifier Article");
+		btnModArticle.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnModArticle.setBackground(new Color(50, 205, 50));
+		btnModArticle.setBounds(0, 150, 119, 52);
+		DiviseurDroite.add(btnModArticle);
+		btnConfirmer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cmd = e.getActionCommand();
+
+				if (cmd.equals("Confirmer")) {
+					dispose();
+
+					new InterfaceB_1().setVisible(true);
+				}
+
+			}
+		});
 
 	}
 }

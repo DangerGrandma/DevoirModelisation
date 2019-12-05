@@ -213,7 +213,7 @@ public class InterfaceB_1 extends JFrame {
 		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
 		
 		txtArticlesCommentairesQuantit = new JTextField();
-		txtArticlesCommentairesQuantit.setText("  Articles\t\t\tCommentaires\t \t        Quantit\u00E9\t   \t           Prix");
+		txtArticlesCommentairesQuantit.setText("  Articles\t\t\t\t\t Quantit\u00E9\t   \t      Prix");
 		txtArticlesCommentairesQuantit.setEditable(false);
 		txtArticlesCommentairesQuantit.setBounds(10, 58, 707, 37);
 		contentPane.add(txtArticlesCommentairesQuantit);
