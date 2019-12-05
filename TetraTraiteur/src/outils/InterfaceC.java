@@ -245,7 +245,7 @@ public class InterfaceC extends JFrame {
 				menuTofu.setBounds(153, 316, 178, 24);
 				contentPane.add(menuTofu);
 				
-				JCheckBoxMenuItem menuSpaghetti = new JCheckBoxMenuItem("Spaghetti \u00E0 l'encre");
+				JCheckBoxMenuItem menuSpaghetti = new JCheckBoxMenuItem("Spaghetti a l'encre");
 				menuSpaghetti.setFont(new Font("Tahoma", Font.BOLD, 14));
 				menuSpaghetti.setBounds(341, 89, 189, 24);
 				contentPane.add(menuSpaghetti);
@@ -260,15 +260,15 @@ public class InterfaceC extends JFrame {
 				menuHomard.setBounds(341, 238, 179, 24);
 				contentPane.add(menuHomard);
 				
-				JCheckBoxMenuItem menuBurger = new JCheckBoxMenuItem("Burger V\u00E9g\u00E9");
+				JCheckBoxMenuItem menuBurger = new JCheckBoxMenuItem("Burger Vege");
 				menuBurger.setFont(new Font("Tahoma", Font.BOLD, 14));
 				menuBurger.setBounds(341, 316, 179, 24);
 				contentPane.add(menuBurger);
 				
-				JCheckBoxMenuItem Café = new JCheckBoxMenuItem("Caf\u00E9");
-				Café.setFont(new Font("Tahoma", Font.BOLD, 14));
-				Café.setBounds(569, 89, 159, 24);
-				contentPane.add(Café);
+				JCheckBoxMenuItem Cafe = new JCheckBoxMenuItem("Cafe");
+				Cafe.setFont(new Font("Tahoma", Font.BOLD, 14));
+				Cafe.setBounds(569, 89, 159, 24);
+				contentPane.add(Cafe);
 				
 				JCheckBoxMenuItem BoissonGazeuse = new JCheckBoxMenuItem("Boisson Gazeuse");
 				BoissonGazeuse.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -280,10 +280,10 @@ public class InterfaceC extends JFrame {
 				Limonade.setBounds(569, 238, 159, 24);
 				contentPane.add(Limonade);
 				
-				JCheckBoxMenuItem Thé = new JCheckBoxMenuItem("Th\u00E9");
-				Thé.setFont(new Font("Tahoma", Font.BOLD, 14));
-				Thé.setBounds(569, 316, 159, 24);
-				contentPane.add(Thé);
+				JCheckBoxMenuItem The = new JCheckBoxMenuItem("The");
+				The.setFont(new Font("Tahoma", Font.BOLD, 14));
+				The.setBounds(569, 316, 159, 24);
+				contentPane.add(The);
 				
 				//Création du bouton annuler la commande, qui efface tout ce qu'il y a dans la liste de la commande
 				
