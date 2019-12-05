@@ -55,6 +55,8 @@ public class Interface extends JFrame {
 											// modification.
 	private static boolean btnsClients = false; // Variable qui permet d'afficher les boutons des clients d'une table.
 
+	static JLabel boxUtilisateur;
+	
 	public Interface() {
 
 		// Cr�ation de la fen�tre de l'application.
@@ -177,6 +179,7 @@ public class Interface extends JFrame {
 		lblModTable.setHorizontalAlignment(SwingConstants.CENTER);
 		lblModTable.setBounds(101, 19, 125, 14);
 		DiviseurHaut.add(lblModTable);
+		lblModTable.setBorder(null);
 		lblModTable.setVisible(false);
 
 		// Cr�ation d'un bouton pour changer l'utilisateur
@@ -218,7 +221,7 @@ public class Interface extends JFrame {
 
 		// Cr�ation d'un Label qui affiche ces informations
 
-		JLabel boxUtilisateur = new JLabel("Utilisateur");
+		boxUtilisateur = new JLabel("Utilisateur");
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
 		boxUtilisateur.setFont(new Font("Tahoma", Font.BOLD, 11));
 		boxUtilisateur.setBounds(10, 11, 99, 25);
@@ -281,21 +284,6 @@ public class Interface extends JFrame {
 		btnArchive.setBackground(new Color(50, 205, 50));
 		btnArchive.setBounds(0, 363, 119, 85);
 		DiviseurDroite.add(btnArchive);
-
-		// Cr�ation du bouton pour changer d'utilisateur.
-
-		JButton btnUtilisateur = new JButton("Utilisateurs");
-		btnUtilisateur.setHorizontalAlignment(SwingConstants.LEFT);
-		btnUtilisateur.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnUtilisateur.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnUtilisateur.setForeground(new Color(255, 255, 255));
-		btnUtilisateur.setBackground(new Color(50, 205, 50));
-		btnUtilisateur.setBounds(0, 146, 119, 85);
-		btnUtilisateur.setBorder(null);
-		DiviseurDroite.add(btnUtilisateur);
 
 		/*
 		 * Boutons pour les tables de 1 � 24. Lorsque @param btnsActives est True, on
@@ -1195,8 +1183,6 @@ public class Interface extends JFrame {
 					btnTableSaisie.setVisible(false);
 					lblModTable.setVisible(false);
 					btnClientsTable.setVisible(true);
-					btnUtilisateur.setVisible(true);
-					// btnRetour.setVisible(false);
 					btnTable1.setVisible(true);
 
 				}
@@ -1214,7 +1200,6 @@ public class Interface extends JFrame {
 					btnTableSaisie.setVisible(true);
 					lblModTable.setVisible(false);
 					btnClientsTable.setVisible(true);
-					btnUtilisateur.setVisible(false);
 					btnNewUtilisateur.setVisible(false);
 
 				}
@@ -1256,7 +1241,6 @@ public class Interface extends JFrame {
 					btnTableSaisie.setVisible(false);
 					lblModTable.setVisible(false);
 					btnClientsTable.setVisible(false);
-					btnUtilisateur.setVisible(true);
 
 				}
 
@@ -1273,7 +1257,6 @@ public class Interface extends JFrame {
 					btnTableSaisie.setVisible(true);
 					lblModTable.setVisible(true);
 					btnClientsTable.setVisible(true);
-					btnUtilisateur.setVisible(false);
 				}
 			}
 
@@ -1290,17 +1273,6 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(imgDiviseurDroite);
 		imgDiviseurDroite.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Bannerdroite.PNG")));
 
-		/*
-		 * Background.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { if (btnsClients) {
-		 * btnTableSaisie.setText("Table1"); Background.setVisible(true);
-		 * btnClient1.setVisible(true); btnClient2.setVisible(true);
-		 * btnClient3.setVisible(true); btnClient4.setVisible(true);
-		 * btnClient5.setVisible(true); btnClient6.setVisible(true);
-		 * btnTable1.setVisible(false);
-		 * 
-		 * } } });
-		 */
 
 	}
 }
