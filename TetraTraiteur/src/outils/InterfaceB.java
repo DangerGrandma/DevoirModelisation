@@ -34,6 +34,13 @@ public class InterfaceB extends JFrame {
 			}
 		});
 	}
+	
+	private static boolean client1 = false;
+	private static boolean client2 = false;
+	private static boolean client3 = false;
+	private static boolean client4 = false;
+	private static boolean client5 = false;
+	private static boolean client6 = false;
 
 	public InterfaceB() {
 
@@ -188,7 +195,7 @@ public class InterfaceB extends JFrame {
 		JCheckBox Client1 = new JCheckBox("Client 1");
 		Client1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client1.setBounds(78, 96, 99, 38);
-		Client1.setVisible(false);
+		Client1.setVisible(client1);
 		contentPane.add(Client1);
 		// Client1.setSelected(false);
 
@@ -198,7 +205,7 @@ public class InterfaceB extends JFrame {
 		Ajouter1.setVerticalAlignment(SwingConstants.TOP);
 		Ajouter1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Ajouter1.setBounds(183, 96, 52, 35);
-		Ajouter1.setVisible(true);
+		Ajouter1.setVisible(!client1);
 		contentPane.add(Ajouter1);
 
 		// Bouton qui permet de soustraire le client 1
@@ -208,22 +215,24 @@ public class InterfaceB extends JFrame {
 		Soustraire1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Soustraire1.setBounds(245, 96, 52, 35);
 		contentPane.add(Soustraire1);
-		Soustraire1.setVisible(false);
+		Soustraire1.setVisible(client1);
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
 		Ajouter1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					Client1.setVisible(true);
-					Ajouter1.setVisible(false);
-					Soustraire1.setVisible(true);
+				client1 = true;
+				Client1.setVisible(true);
+				Ajouter1.setVisible(false);
+				Soustraire1.setVisible(true);
 			}
 		});
 		Soustraire1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					Client1.setVisible(false);
-					Ajouter1.setVisible(true);
-					Soustraire1.setVisible(false);
+				client1 = false;
+				Client1.setVisible(false);
+				Ajouter1.setVisible(true);
+				Soustraire1.setVisible(false);
 			}
 
 		});
@@ -232,7 +241,7 @@ public class InterfaceB extends JFrame {
 		JCheckBox Client2 = new JCheckBox("Client 2");
 		Client2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client2.setBounds(78, 156, 95, 38);
-		Client2.setVisible(false);
+		Client2.setVisible(client2);
 		contentPane.add(Client2);
 
 		// Bouton qui permet d'ajouter le client 2
@@ -242,7 +251,7 @@ public class InterfaceB extends JFrame {
 		Ajouter2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Ajouter2.setBounds(183, 156, 52, 35);
 		contentPane.add(Ajouter2);
-		Ajouter2.setVisible(true);
+		Ajouter2.setVisible(!client2);
 
 		// Bouton qui permet de soustraire le client 2
 		JButton Soustraire2 = new JButton("-");
@@ -250,13 +259,14 @@ public class InterfaceB extends JFrame {
 		Soustraire2.setForeground(Color.RED);
 		Soustraire2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Soustraire2.setBounds(245, 156, 52, 35);
-		Soustraire2.setVisible(false);
+		Soustraire2.setVisible(client2);
 		contentPane.add(Soustraire2);
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
 		Ajouter2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client2 = true;
 				Client2.setVisible(true);
 				Ajouter2.setVisible(false);
 				Soustraire2.setVisible(true);
@@ -264,6 +274,7 @@ public class InterfaceB extends JFrame {
 		});
 		Soustraire2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client2 = false;
 				Client2.setVisible(false);
 				Ajouter2.setVisible(true);
 				Soustraire2.setVisible(false);
@@ -275,7 +286,7 @@ public class InterfaceB extends JFrame {
 		JCheckBox Client3 = new JCheckBox("Client 3");
 		Client3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client3.setBounds(78, 216, 95, 38);
-		Client3.setVisible(false);
+		Client3.setVisible(client3);
 		contentPane.add(Client3);
 
 		// Bouton qui permet d'ajouter le client 3
@@ -285,7 +296,7 @@ public class InterfaceB extends JFrame {
 		Ajouter3.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Ajouter3.setBounds(183, 216, 52, 35);
 		contentPane.add(Ajouter3);
-		Ajouter3.setVisible(true);
+		Ajouter3.setVisible(!client3);
 
 		// Bouton qui permet de soustraire le client 3
 		JButton Soustraire3 = new JButton("-");
@@ -293,13 +304,14 @@ public class InterfaceB extends JFrame {
 		Soustraire3.setForeground(Color.RED);
 		Soustraire3.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Soustraire3.setBounds(245, 216, 52, 35);
-		Soustraire3.setVisible(false);
+		Soustraire3.setVisible(client3);
 		contentPane.add(Soustraire3);
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
 		Ajouter3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client3 = true;
 				Client3.setVisible(true);
 				Ajouter3.setVisible(false);
 				Soustraire3.setVisible(true);
@@ -307,6 +319,7 @@ public class InterfaceB extends JFrame {
 		});
 		Soustraire3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client3 = false;
 				Client3.setVisible(false);
 				Ajouter3.setVisible(true);
 				Soustraire3.setVisible(false);
@@ -318,7 +331,7 @@ public class InterfaceB extends JFrame {
 		JCheckBox Client4 = new JCheckBox("Client 4");
 		Client4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client4.setBounds(78, 276, 95, 38);
-		Client4.setVisible(false);
+		Client4.setVisible(client4);
 		contentPane.add(Client4);
 
 		// Bouton qui permet d'ajouter le client 4
@@ -328,7 +341,7 @@ public class InterfaceB extends JFrame {
 		Ajouter4.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Ajouter4.setBounds(183, 276, 52, 35);
 		contentPane.add(Ajouter4);
-		Ajouter4.setVisible(true);
+		Ajouter4.setVisible(!client3);
 
 		// Bouton qui permet de soustraire le client 4
 		JButton Soustraire4 = new JButton("-");
@@ -336,13 +349,14 @@ public class InterfaceB extends JFrame {
 		Soustraire4.setForeground(Color.RED);
 		Soustraire4.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Soustraire4.setBounds(245, 276, 52, 35);
-		Soustraire4.setVisible(false);
+		Soustraire4.setVisible(client3);
 		contentPane.add(Soustraire4);
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
 		Ajouter4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client4 = true;
 				Client4.setVisible(true);
 				Ajouter4.setVisible(false);
 				Soustraire4.setVisible(true);
@@ -350,6 +364,7 @@ public class InterfaceB extends JFrame {
 		});
 		Soustraire4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client4 = false;
 				Client4.setVisible(false);
 				Ajouter4.setVisible(true);
 				Soustraire4.setVisible(false);
@@ -361,7 +376,7 @@ public class InterfaceB extends JFrame {
 		JCheckBox Client5 = new JCheckBox("Client 5");
 		Client5.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client5.setBounds(78, 336, 95, 38);
-		Client5.setVisible(false);
+		Client5.setVisible(client5);
 		contentPane.add(Client5);
 
 		// Bouton qui permet d'ajouter le client 5
@@ -371,7 +386,7 @@ public class InterfaceB extends JFrame {
 		Ajouter5.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Ajouter5.setBounds(183, 336, 52, 35);
 		contentPane.add(Ajouter5);
-		Ajouter5.setVisible(true);
+		Ajouter5.setVisible(!client5);
 
 		// Bouton qui permet de soustraire le client 5
 		JButton Soustraire5 = new JButton("-");
@@ -379,13 +394,14 @@ public class InterfaceB extends JFrame {
 		Soustraire5.setForeground(Color.RED);
 		Soustraire5.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Soustraire5.setBounds(245, 336, 52, 35);
-		Soustraire5.setVisible(false);
+		Soustraire5.setVisible(client5);
 		contentPane.add(Soustraire5);
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
 		Ajouter5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client5 = true;
 				Client5.setVisible(true);
 				Ajouter5.setVisible(false);
 				Soustraire5.setVisible(true);
@@ -393,6 +409,7 @@ public class InterfaceB extends JFrame {
 		});
 		Soustraire5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client5 = false;
 				Client5.setVisible(false);
 				Ajouter5.setVisible(true);
 				Soustraire5.setVisible(false);
@@ -404,7 +421,7 @@ public class InterfaceB extends JFrame {
 		JCheckBox Client6 = new JCheckBox("Client 6");
 		Client6.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client6.setBounds(78, 396, 95, 38);
-		Client6.setVisible(false);
+		Client6.setVisible(client6);
 		contentPane.add(Client6);
 
 		// Bouton qui permet d'ajouter le client 6
@@ -414,7 +431,7 @@ public class InterfaceB extends JFrame {
 		Ajouter6.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Ajouter6.setBounds(183, 396, 52, 35);
 		contentPane.add(Ajouter6);
-		Ajouter6.setVisible(true);
+		Ajouter6.setVisible(!client6);
 
 		// Bouton qui permet de soustraire le client 6
 		JButton Soustraire6 = new JButton("-");
@@ -422,13 +439,14 @@ public class InterfaceB extends JFrame {
 		Soustraire6.setForeground(Color.RED);
 		Soustraire6.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Soustraire6.setBounds(245, 396, 52, 35);
-		Soustraire6.setVisible(false);
+		Soustraire6.setVisible(client6);
 		contentPane.add(Soustraire6);
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
 		Ajouter6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client6 = true;
 				Client6.setVisible(true);
 				Ajouter6.setVisible(false);
 				Soustraire6.setVisible(true);
@@ -436,6 +454,7 @@ public class InterfaceB extends JFrame {
 		});
 		Soustraire6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				client6 = false;
 				Client6.setVisible(false);
 				Ajouter6.setVisible(true);
 				Soustraire6.setVisible(false);

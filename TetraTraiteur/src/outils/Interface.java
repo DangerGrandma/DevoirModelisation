@@ -1206,7 +1206,7 @@ public class Interface extends JFrame {
 				else {
 					btnsClients = true;
 					imgDiviseurHaut
-							.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(actif).png")));
+							.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(actif).PNG")));
 					btnLibre.setVisible(false);
 					btnOccupee.setVisible(false);
 					btnDebarrasser.setVisible(false);

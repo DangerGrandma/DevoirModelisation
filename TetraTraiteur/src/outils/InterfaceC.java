@@ -49,7 +49,7 @@ public class InterfaceC extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfaceC() {
-		// Création de la fenêtre de l'application.
+		// Crï¿½ation de la fenï¿½tre de l'application.
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 862, 522);
@@ -59,7 +59,7 @@ public class InterfaceC extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		// Création de la banière du haut.
+		// Crï¿½ation de la baniï¿½re du haut.
 
 		JPanel DiviseurHaut = new JPanel();
 		DiviseurHaut.setBounds(0, 0, 728, 48);
@@ -67,7 +67,7 @@ public class InterfaceC extends JFrame {
 		contentPane.add(DiviseurHaut);
 		DiviseurHaut.setLayout(null);
 
-		// Création de la banière de droite
+		// Crï¿½ation de la baniï¿½re de droite
 
 		JPanel DiviseurDroite = new JPanel();
 		DiviseurDroite.setBounds(727, 0, 119, 483);
@@ -75,7 +75,7 @@ public class InterfaceC extends JFrame {
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 
-		// Création d'un paneau qui contient des données relatives à l'utilisateur
+		// Crï¿½ation d'un paneau qui contient des donnï¿½es relatives ï¿½ l'utilisateur
 		// actuel
 
 		JPanel PaneauUtilisateur = new JPanel();
@@ -84,7 +84,7 @@ public class InterfaceC extends JFrame {
 		PaneauUtilisateur.setBackground(Color.YELLOW);
 		PaneauUtilisateur.setLayout(null);
 
-		// Création d'un Label qui affiche ces informations
+		// Crï¿½ation d'un Label qui affiche ces informations
 
 		JLabel boxUtilisateur = new JLabel("Utilisateur");
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
@@ -92,7 +92,7 @@ public class InterfaceC extends JFrame {
 		boxUtilisateur.setBounds(10, 11, 99, 25);
 		PaneauUtilisateur.add(boxUtilisateur);
 
-		// Image utilisée pour le paneau utilisateur.
+		// Image utilisï¿½e pour le paneau utilisateur.
 
 		JLabel imgUtilisateur = new JLabel("");
 		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
@@ -100,7 +100,7 @@ public class InterfaceC extends JFrame {
 		PaneauUtilisateur.add(imgUtilisateur);
 		imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
 
-		// Création d'un paneau où sont affichées les informations relatives au temps.
+		// Crï¿½ation d'un paneau oï¿½ sont affichï¿½es les informations relatives au temps.
 
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -108,13 +108,13 @@ public class InterfaceC extends JFrame {
 		DiviseurDroite.add(PaneauTemps);
 		PaneauTemps.setLayout(null);
 
-		// Création d'un objet qui prend en compte les données relatives au temps actuel
-		// (synchronisation à l'ordinateur).
+		// Crï¿½ation d'un objet qui prend en compte les donnï¿½es relatives au temps actuel
+		// (synchronisation ï¿½ l'ordinateur).
 
 		LocalDateTime dateHeure = LocalDateTime.now();
 
-		// Création d'un Label qui afficher le temps actuel selon un format mois, jour
-		// et année.
+		// Crï¿½ation d'un Label qui afficher le temps actuel selon un format mois, jour
+		// et annï¿½e.
 
 		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
 		JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
@@ -122,7 +122,7 @@ public class InterfaceC extends JFrame {
 		boxTempsJour.setBounds(12, 11, 99, 29);
 		PaneauTemps.add(boxTempsJour);
 
-		// Création d'une Label qui affiche le temps actuel selon un format heure et
+		// Crï¿½ation d'une Label qui affiche le temps actuel selon un format heure et
 		// minutes.
 
 		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
@@ -131,20 +131,21 @@ public class InterfaceC extends JFrame {
 		lblNewLabel.setBounds(37, 35, 46, 14);
 		PaneauTemps.add(lblNewLabel);
 
-		// Image utilisée pour la banière du temps.
+		// Image utilisï¿½e pour la baniï¿½re du temps.
 
 		JLabel imgTemps = new JLabel("");
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
 		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
 
-		// Création du bouton Retour qui amène l'utlisateur à l'interface B.
+		// Crï¿½ation du bouton Retour qui amï¿½ne l'utlisateur ï¿½ l'interface B.
 
 		JButton btnRetour = new JButton("RETOUR");
 		btnRetour.setForeground(Color.WHITE);
 		btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnRetour.setBackground(new Color(0, 0, 128));
 		btnRetour.setBounds(7, 11, 94, 29);
+		btnRetour.setBorder(null);
 		DiviseurHaut.add(btnRetour);
 		btnRetour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -386,7 +387,7 @@ public class InterfaceC extends JFrame {
 
 		});
 
-		// Création du bouton annuler la commande, qui efface tout ce qu'il y a dans la
+		// Crï¿½ation du bouton annuler la commande, qui efface tout ce qu'il y a dans la
 		// liste de la commande
 
 		JButton btnAnnuler = new JButton("Annuler");
@@ -433,7 +434,7 @@ public class InterfaceC extends JFrame {
 
 		});
 
-		// Création du bouton qui confirme le "panier" de la commande et qui retourne à
+		// Crï¿½ation du bouton qui confirme le "panier" de la commande et qui retourne ï¿½
 		// l'interface B_1
 
 		JButton btnConfirmer = new JButton("Confirmer");
