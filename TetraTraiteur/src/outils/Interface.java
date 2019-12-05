@@ -310,22 +310,7 @@ public class Interface extends JFrame {
 				}
 			}
 		});
-		btnTable1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (btnsClients) {
-					btnTableSaisie.setText("Table1");
-					String cmd = e.getActionCommand();
 
-					if (cmd.equals("1")) {
-						dispose();
-
-						new InterfaceB().setVisible(true);
-					}
-
-				}
-
-			}
-		});
 		btnTable1.setFont(new Font("Arial", Font.BOLD, 13));
 		btnTable1.setMargin(new Insets(0, 0, 0, 0));
 		btnTable1.setBackground(Color.LIGHT_GRAY);
@@ -1152,6 +1137,10 @@ public class Interface extends JFrame {
 		btnTable24.setBounds(597, 380, 50, 50);
 		contentPane.add(btnTable24);
 
+		
+		
+		
+		
 		// Image utilisée pour l'interface principale, ici la salle.
 
 		JLabel imgSalle = new JLabel("");

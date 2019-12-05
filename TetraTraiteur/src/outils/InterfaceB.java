@@ -192,16 +192,7 @@ public class InterfaceB extends JFrame {
 		Client1.setBounds(78, 96, 99, 38);
 		Client1.setVisible(true);
 		contentPane.add(Client1);
-		Client1.setSelected(false);
-		/*
-		 * Client1.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { if(Client1.isSelected()){
-		 * 
-		 * 
-		 * }
-		 * 
-		 * } });
-		 */
+		// Client1.setSelected(false);
 
 		// Bouton qui permet d'ajouter le client 1
 		JButton Ajouter1 = new JButton("+");
@@ -542,16 +533,28 @@ public class InterfaceB extends JFrame {
 		btnModClients.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (Client1.isSelected()) {
+					dispose();
+					new InterfaceB_1().setVisible(true);
 
 				} else if (Client2.isSelected()) {
+					dispose();
+					new InterfaceB_1().setVisible(true);
 
 				} else if (Client3.isSelected()) {
+					dispose();
+					new InterfaceB_1().setVisible(true);
 
 				} else if (Client4.isSelected()) {
+					dispose();
+					new InterfaceB_1().setVisible(true);
 
 				} else if (Client5.isSelected()) {
+					dispose();
+					new InterfaceB_1().setVisible(true);
 
 				} else if (Client6.isSelected()) {
+					dispose();
+					new InterfaceB_1().setVisible(true);
 
 				}
 			}
