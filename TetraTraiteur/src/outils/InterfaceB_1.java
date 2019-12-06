@@ -36,6 +36,8 @@ public class InterfaceB_1 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -162,7 +164,7 @@ public class InterfaceB_1 extends JFrame {
 			}
 		});
 		
-		JButton btnClient = new JButton("Client#");
+		JButton btnClient = new JButton(""+InterfaceB.clientChoisi.nom);
 		btnClient.setOpaque(true);
 		btnClient.setContentAreaFilled(false);
 		btnClient.setBackground(Color.LIGHT_GRAY);
@@ -194,13 +196,9 @@ public class InterfaceB_1 extends JFrame {
 
 		// Cr�ation d'une metion de la table choisie pour les modification � apporter.
 
-		JButton btnTableSaisie = new JButton("Table#");
+		JButton btnTableSaisie = new JButton("Table"+Interface.tableChoisie.numero);
 		btnTableSaisie.setBounds(530, 12, 81, 30);
 		DiviseurHaut.add(btnTableSaisie);
-		btnTableSaisie.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnTableSaisie.setContentAreaFilled(false);
 		btnTableSaisie.setOpaque(true);
 		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
@@ -221,6 +219,11 @@ public class InterfaceB_1 extends JFrame {
 		txtArticlesCommentairesQuantit.setBounds(10, 58, 707, 37);
 		contentPane.add(txtArticlesCommentairesQuantit);
 		txtArticlesCommentairesQuantit.setColumns(10);
+		
+		JLabel labelArticles = new JLabel("");
+		
+		labelArticles.setBounds(20, 109, 105, 344);
+		contentPane.add(labelArticles);
 		
 	}
 }

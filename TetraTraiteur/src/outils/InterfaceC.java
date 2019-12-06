@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,6 +29,19 @@ import javax.swing.JTable;
 public class InterfaceC extends JFrame {
 
 	private JPanel contentPane;
+	
+	private static ArrayList<Article> articlesChoisis = new ArrayList<Article>();
+	
+	public void retirerArticle(String s)
+	{
+		for(int i = 0; i < articlesChoisis.size()+1; i++)
+		{
+			if(articlesChoisis.get(i).nom.equals(s))
+			{
+				articlesChoisis.remove(i);
+			}
+		}
+	}
 
 	/**
 	 * Launch the application.
@@ -159,7 +173,7 @@ public class InterfaceC extends JFrame {
 
 			}
 		});
-
+		
 		// Menu
 
 		JCheckBoxMenuItem menuSalade = new JCheckBoxMenuItem("Salade");
@@ -170,8 +184,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuSalade.isSelected()) {
 					menuSalade.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Salade);
 				} else {
 					menuSalade.setBackground(null);
+					retirerArticle("Salade");					
 				}
 			}
 
@@ -185,8 +201,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuSoupe.isSelected()) {
 					menuSoupe.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Soupe);
 				} else {
 					menuSoupe.setBackground(null);
+					retirerArticle("Soupe");
 				}
 			}
 
@@ -200,8 +218,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuBruschetta.isSelected()) {
 					menuBruschetta.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Bruschetta);
 				} else {
 					menuBruschetta.setBackground(null);
+					retirerArticle("Bruschetta");
 				}
 			}
 
@@ -215,8 +235,11 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (MenuSaumon.isSelected()) {
 					MenuSaumon.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Saumon);
 				} else {
 					MenuSaumon.setBackground(null);
+					retirerArticle("Saumon");
+					
 				}
 			}
 
@@ -230,8 +253,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuPoulet.isSelected()) {
 					menuPoulet.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Poulet);
 				} else {
 					menuPoulet.setBackground(null);
+					retirerArticle("Poulet");
 				}
 			}
 
@@ -245,8 +270,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuBLT.isSelected()) {
 					menuBLT.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.BLT);
 				} else {
 					menuBLT.setBackground(null);
+					retirerArticle("BLT");
 				}
 			}
 
@@ -260,8 +287,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuTofu.isSelected()) {
 					menuTofu.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Tofu);
 				} else {
 					menuTofu.setBackground(null);
+					retirerArticle("Tofu");
 				}
 			}
 
@@ -275,8 +304,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuSpaghetti.isSelected()) {
 					menuSpaghetti.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Spaghetti);
 				} else {
 					menuSpaghetti.setBackground(null);
+					retirerArticle("Spaghetti");
 				}
 			}
 
@@ -290,8 +321,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuRisotto.isSelected()) {
 					menuRisotto.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Risotto);
 				} else {
 					menuRisotto.setBackground(null);
+					retirerArticle("Risotto");
 				}
 			}
 
@@ -305,8 +338,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuHomard.isSelected()) {
 					menuHomard.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Homard);
 				} else {
 					menuHomard.setBackground(null);
+					retirerArticle("Homard");
 				}
 			}
 
@@ -320,8 +355,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (menuBurger.isSelected()) {
 					menuBurger.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Burger);
 				} else {
 					menuBurger.setBackground(null);
+					retirerArticle("Burger");
 				}
 			}
 
@@ -335,8 +372,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (Cafe.isSelected()) {
 					Cafe.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Cafe);
 				} else {
 					Cafe.setBackground(null);
+					retirerArticle("Cafe");
 				}
 			}
 
@@ -350,8 +389,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (BoissonGazeuse.isSelected()) {
 					BoissonGazeuse.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Soda);
 				} else {
 					BoissonGazeuse.setBackground(null);
+					retirerArticle("Soda");
 				}
 			}
 
@@ -365,8 +406,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (Limonade.isSelected()) {
 					Limonade.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.Limonade);
 				} else {
 					Limonade.setBackground(null);
+					retirerArticle("Limonade");
 				}
 			}
 
@@ -380,8 +423,10 @@ public class InterfaceC extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (The.isSelected()) {
 					The.setBackground(Color.LIGHT_GRAY);
+					articlesChoisis.add(Article.The);
 				} else {
 					The.setBackground(null);
+					retirerArticle("The");
 				}
 			}
 
@@ -442,24 +487,29 @@ public class InterfaceC extends JFrame {
 		btnConfirmer.setBackground(new Color(50, 205, 50));
 		btnConfirmer.setBounds(0, 421, 119, 52);
 		DiviseurDroite.add(btnConfirmer);
+		btnConfirmer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cmd = e.getActionCommand();
+
+				if (cmd.equals("Confirmer")) {
+					for(int i = 0; i < articlesChoisis.size(); i++) {
+					InterfaceB.clientChoisi.commande.add(articlesChoisis.get(i));
+					}
+					dispose();
+
+					new InterfaceB_1().setVisible(true);
+					
+				}
+
+			}
+		});
 
 		JButton btnModArticle = new JButton("Modifier Article");
 		btnModArticle.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnModArticle.setBackground(new Color(50, 205, 50));
 		btnModArticle.setBounds(0, 150, 119, 52);
 		DiviseurDroite.add(btnModArticle);
-		btnConfirmer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String cmd = e.getActionCommand();
 
-				if (cmd.equals("Confirmer")) {
-					dispose();
-
-					new InterfaceB_1().setVisible(true);
-				}
-
-			}
-		});
 
 	}
 }

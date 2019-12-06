@@ -33,6 +33,7 @@ import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
@@ -50,16 +51,24 @@ import java.awt.Button;
 public class Interface extends JFrame {
 
 	private JPanel contentPane; // Paneau d'affichage principal.
-	private static boolean btnsActives = false; // Variable qui permet d'afficher les boutons d'�tat de table.
-	private static JButton boutonActuel; // Variable utilis�e pour d�terminer quel table a �t� s�lectionn�e pour
+	private static boolean btnsActives = false; // Variable qui permet d'afficher les boutons d'etat de table.
+	private static JButton boutonActuel; // Variable utilisee pour determiner quelle table a ete selectionnee pour
 											// modification.
-	private static boolean btnsClients = false; // Variable qui permet d'afficher les boutons des clients d'une table.
+	//protected ArrayList<Table> listeTables = new ArrayList<Table>();
+	protected static boolean btnsClients = false; // Variable qui permet d'afficher les boutons des clients d'une table.
+	protected static Table tableChoisie;
 
 	static JLabel boxUtilisateur;
 	
+	
+	
 	public Interface() {
 
-		// Cr�ation de la fen�tre de l'application.
+
+		
+		//System.out.println(listeTables.size());
+		
+		// Creation de la fenetre de l'application.
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 862, 522);
@@ -69,7 +78,7 @@ public class Interface extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		// Cr�ation de la bani�re du haut.
+		// Creation de la baniere du haut.
 
 		JPanel DiviseurHaut = new JPanel();
 		DiviseurHaut.setBounds(0, 0, 728, 48);
@@ -78,9 +87,9 @@ public class Interface extends JFrame {
 		DiviseurHaut.setLayout(null);
 
 		/*
-		 * Cr�ation du bouton de changement d'�tat de table � "Libre". La table choisie
+		 * Creation du bouton de changement d'etat de table e "Libre". La table choisie
 		 * en @param boutonActuel devient Libre, puis @param boutonActuel se vide afin
-		 * de limiter les op�rations et requiert une nouvelle s�lection pour autres
+		 * de limiter les operations et requiert une nouvelle selection pour autres
 		 * modifications.
 		 */
 
@@ -98,9 +107,9 @@ public class Interface extends JFrame {
 		});
 
 		/*
-		 * Cr�ation du bouton de changement d'�tat de table � "Occup�e". La table
-		 * choisie en @param boutonActuel devient Occup�e, puis @param boutonActuel se
-		 * vide afin de limiter les op�rations et requiert une nouvelle s�lection pour
+		 * Creation du bouton de changement d'etat de table e "Occupee". La table
+		 * choisie en @param boutonActuel devient Occupee, puis @param boutonActuel se
+		 * vide afin de limiter les operations et requiert une nouvelle selection pour
 		 * autres modifications.
 		 */
 
@@ -118,10 +127,10 @@ public class Interface extends JFrame {
 		btnOccupee.setVisible(false);
 
 		/*
-		 * Cr�ation du bouton de changement d'�tat de table � "� D�barrasser". La table
-		 * choisie en @param boutonActuel devient � D�barrasser, puis @param
-		 * boutonActuel se vide afin de limiter les op�rations et requiert une nouvelle
-		 * s�lection pour autres modifications.
+		 * Creation du bouton de changement d'etat de table e "e Debarrasser". La table
+		 * choisie en @param boutonActuel devient e Debarrasser, puis @param
+		 * boutonActuel se vide afin de limiter les operations et requiert une nouvelle
+		 * selection pour autres modifications.
 		 */
 
 		JButton btnDebarrasser = new JButton("");
@@ -138,10 +147,10 @@ public class Interface extends JFrame {
 		btnDebarrasser.setVisible(false);
 
 		/*
-		 * Cr�ation du bouton de changement d'�tat de table � "Autre Serveur". La table
+		 * Creation du bouton de changement d'etat de table e "Autre Serveur". La table
 		 * choisie en @param boutonActuel devient Autre Serveur, puis @param
-		 * boutonActuel se vide afin de limiter les op�rations et requiert une nouvelle
-		 * s�lection pour autres modifications.
+		 * boutonActuel se vide afin de limiter les operations et requiert une nouvelle
+		 * selection pour autres modifications.
 		 */
 
 		JButton btnAutreServeur = new JButton("");
@@ -157,7 +166,7 @@ public class Interface extends JFrame {
 		DiviseurHaut.add(btnAutreServeur);
 		btnAutreServeur.setVisible(false);
 
-		// Cr�ation d'une metion de la table choisie pour les modification � apporter.
+		// Creation d'une metion de la table choisie pour les modification e apporter.
 
 		JButton btnTableSaisie = new JButton("Table#");
 		btnTableSaisie.addActionListener(new ActionListener() {
@@ -171,10 +180,10 @@ public class Interface extends JFrame {
 		DiviseurHaut.add(btnTableSaisie);
 		btnTableSaisie.setVisible(false);
 
-		// Cr�ation d'un Label qui indique � l'utilisateur de choisir une table �
-		// modifier, puis son nouvel �tat.
+		// Creation d'un Label qui indique e l'utilisateur de choisir une table e
+		// modifier, puis son nouvel etat.
 
-		JLabel lblModTable = new JLabel("Choisir Table + �tat");
+		JLabel lblModTable = new JLabel("Choisir Table + etat");
 		lblModTable.setFont(new Font("Arial", Font.BOLD, 12));
 		lblModTable.setHorizontalAlignment(SwingConstants.CENTER);
 		lblModTable.setBounds(101, 19, 125, 14);
@@ -182,7 +191,7 @@ public class Interface extends JFrame {
 		lblModTable.setBorder(null);
 		lblModTable.setVisible(false);
 
-		// Cr�ation d'un bouton pour changer l'utilisateur
+		// Creation d'un bouton pour changer l'utilisateur
 
 		JButton btnNewUtilisateur = new JButton("Utilisateur");
 		btnNewUtilisateur.addActionListener(new ActionListener() {
@@ -195,14 +204,14 @@ public class Interface extends JFrame {
 		btnNewUtilisateur.setBorder(null);
 		contentPane.add(btnNewUtilisateur);
 
-		// Image utilis�e pour la bani�re du haut.
+		// Image utilisee pour la baniere du haut.
 
 		JLabel imgDiviseurHaut = new JLabel("");
 		imgDiviseurHaut.setBounds(0, 0, 728, 48);
 		imgDiviseurHaut.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(inactif).jpg")));
 		DiviseurHaut.add(imgDiviseurHaut);
 
-		// Cr�ation de la bani�re de droite
+		// Creation de la baniere de droite
 
 		JPanel DiviseurDroite = new JPanel();
 		DiviseurDroite.setBounds(727, 0, 119, 483);
@@ -210,7 +219,7 @@ public class Interface extends JFrame {
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 
-		// Cr�ation d'un paneau qui contient des donn�es relatives � l'utilisateur
+		// Creation d'un paneau qui contient des donnees relatives e l'utilisateur
 		// actuel
 
 		JPanel PaneauUtilisateur = new JPanel();
@@ -219,7 +228,7 @@ public class Interface extends JFrame {
 		PaneauUtilisateur.setBackground(Color.YELLOW);
 		PaneauUtilisateur.setLayout(null);
 
-		// Cr�ation d'un Label qui affiche ces informations
+		// Creation d'un Label qui affiche ces informations
 
 		boxUtilisateur = new JLabel("Utilisateur");
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
@@ -227,7 +236,7 @@ public class Interface extends JFrame {
 		boxUtilisateur.setBounds(10, 11, 99, 25);
 		PaneauUtilisateur.add(boxUtilisateur);
 
-		// Image utilis�e pour le paneau utilisateur.
+		// Image utilisee pour le paneau utilisateur.
 
 		JLabel imgUtilisateur = new JLabel("");
 		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
@@ -235,7 +244,7 @@ public class Interface extends JFrame {
 		PaneauUtilisateur.add(imgUtilisateur);
 		imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
 
-		// Cr�ation d'un paneau o� sont affich�es les informations relatives au temps.
+		// Creation d'un paneau oe sont affichees les informations relatives au temps.
 
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -244,13 +253,13 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(PaneauTemps);
 		PaneauTemps.setLayout(null);
 
-		// Cr�ation d'un objet qui prend en compte les donn�es relatives au temps actuel
-		// (synchronisation � l'ordinateur).
+		// Creation d'un objet qui prend en compte les donnees relatives au temps actuel
+		// (synchronisation e l'ordinateur).
 
 		LocalDateTime dateHeure = LocalDateTime.now();
 
-		// Cr�ation d'un Label qui afficher le temps actuel selon un format mois, jour
-		// et ann�e.
+		// Creation d'un Label qui afficher le temps actuel selon un format mois, jour
+		// et annee.
 
 		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
 		JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
@@ -259,7 +268,7 @@ public class Interface extends JFrame {
 		boxTempsJour.setBorder(null);
 		PaneauTemps.add(boxTempsJour);
 
-		// Cr�ation d'une Label qui affiche le temps actuel selon un format heure et
+		// Creation d'une Label qui affiche le temps actuel selon un format heure et
 		// minutes.
 
 		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
@@ -269,14 +278,14 @@ public class Interface extends JFrame {
 		lblNewLabel.setBorder(null);
 		PaneauTemps.add(lblNewLabel);
 
-		// Image utilis�e pour la bani�re du temps.
+		// Image utilisee pour la baniere du temps.
 
 		JLabel imgTemps = new JLabel("");
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
 		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
 
-		// Cr�ation du bouton pour invoquer une fen�tre des archives.
+		// Creation du bouton pour invoquer une fenetre des archives.
 
 		JButton btnArchive = new JButton("Archives");
 		btnArchive.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -286,11 +295,11 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(btnArchive);
 
 		/*
-		 * Boutons pour les tables de 1 � 24. Lorsque @param btnsActives est True, on
-		 * peut int�ragir avec les tables pour les modifier. La table s�lectionn�e
-		 * en @param boutonActuel peut alors changer d'�tat ou �tre consult�e et
-		 * chang�e. Cette table est d'ailleurs affich�e en haut � gauche comme �tat
-		 * s�lectionn�e et pr�te � toute modification.
+		 * Boutons pour les tables de 1 e 24. Lorsque @param btnsActives est True, on
+		 * peut interagir avec les tables pour les modifier. La table selectionnee
+		 * en @param boutonActuel peut alors changer d'etat ou etre consultee et
+		 * changee. Cette table est d'ailleurs affichee en haut e gauche comme etat
+		 * selectionnee et prete e toute modification.
 		 */
 
 		JButton btnTable1 = new JButton("1");
@@ -298,12 +307,29 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table1");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable1;
 				}
 			}
 		});
+		btnTable1.addActionListener(new ActionListener() {
 
+			public void actionPerformed(ActionEvent e) {
+				if (btnsClients) {
+					btnTableSaisie.setText("Table1");
+					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(0);
+
+					if (cmd.equals("1")) {
+						dispose();
+
+						new InterfaceB().setVisible(true);
+					}
+
+				}
+
+			}
+		});
 		btnTable1.setFont(new Font("Arial", Font.BOLD, 13));
 		btnTable1.setMargin(new Insets(0, 0, 0, 0));
 		btnTable1.setBorder(null);
@@ -312,13 +338,15 @@ public class Interface extends JFrame {
 		btnTable1.setOpaque(true);
 		btnTable1.setBounds(290, 435, 20, 20);
 		contentPane.add(btnTable1);
+		
+		
 
 		JButton btnTable2 = new JButton("2");
 		btnTable2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table2");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable2;
 				}
 			}
@@ -329,6 +357,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table2");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(1);
 
 					if (cmd.equals("2")) {
 						dispose();
@@ -360,7 +389,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table3");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable3;
 				}
 			}
@@ -371,6 +400,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table3");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(2);
 
 					if (cmd.equals("3")) {
 						dispose();
@@ -388,7 +418,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table4");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable4;
 				}
 			}
@@ -399,6 +429,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table4");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(3);
 
 					if (cmd.equals("4")) {
 						dispose();
@@ -424,7 +455,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table5");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable5;
 				}
 			}
@@ -435,6 +466,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table5");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(4);
 
 					if (cmd.equals("5")) {
 						dispose();
@@ -460,7 +492,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table6");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable6;
 				}
 			}
@@ -471,6 +503,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table6");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(5);
 
 					if (cmd.equals("6")) {
 						dispose();
@@ -496,7 +529,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table7");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable7;
 				}
 			}
@@ -507,6 +540,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table7");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(6);
 
 					if (cmd.equals("7")) {
 						dispose();
@@ -532,7 +566,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table8");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable8;
 				}
 			}
@@ -543,6 +577,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table8");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(7);
 
 					if (cmd.equals("8")) {
 						dispose();
@@ -568,7 +603,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table9");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable9;
 				}
 			}
@@ -579,6 +614,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table9");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(8);
 
 					if (cmd.equals("9")) {
 						dispose();
@@ -603,8 +639,8 @@ public class Interface extends JFrame {
 		btnTable10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
-					btnTableSaisie.setText("Table100");
-					lblModTable.setText("Choisir Table + �tat");
+					btnTableSaisie.setText("Table10");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable10;
 				}
 			}
@@ -615,6 +651,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table10");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(9);
 
 					if (cmd.equals("10")) {
 						dispose();
@@ -641,7 +678,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table11");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable11;
 				}
 			}
@@ -652,6 +689,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table11");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(10);
 
 					if (cmd.equals("11")) {
 						dispose();
@@ -678,7 +716,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table12");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable12;
 				}
 			}
@@ -689,6 +727,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table12");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(11);
 
 					if (cmd.equals("12")) {
 						dispose();
@@ -715,7 +754,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table13");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable13;
 				}
 			}
@@ -726,6 +765,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table13");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(12);
 
 					if (cmd.equals("13")) {
 						dispose();
@@ -752,7 +792,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table14");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable14;
 				}
 			}
@@ -763,6 +803,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table14");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(13);
 
 					if (cmd.equals("14")) {
 						dispose();
@@ -789,7 +830,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table15");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable15;
 				}
 			}
@@ -800,6 +841,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table15");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(14);
 
 					if (cmd.equals("15")) {
 						dispose();
@@ -826,7 +868,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table16");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable16;
 				}
 			}
@@ -837,6 +879,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table16");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(15);
 
 					if (cmd.equals("16")) {
 						dispose();
@@ -863,7 +906,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table17");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable17;
 				}
 			}
@@ -874,6 +917,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table17");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(16);
 
 					if (cmd.equals("17")) {
 						dispose();
@@ -899,7 +943,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table18");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable18;
 				}
 			}
@@ -910,6 +954,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table18");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(17);
 
 					if (cmd.equals("18")) {
 						dispose();
@@ -935,7 +980,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table19");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable19;
 				}
 			}
@@ -946,6 +991,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table19");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(18);
 
 					if (cmd.equals("19")) {
 						dispose();
@@ -971,7 +1017,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table20");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable20;
 				}
 			}
@@ -982,6 +1028,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table20");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(19);
 
 					if (cmd.equals("20")) {
 						dispose();
@@ -1007,7 +1054,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table21");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable21;
 				}
 			}
@@ -1018,6 +1065,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table21");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(20);
 
 					if (cmd.equals("21")) {
 						dispose();
@@ -1043,7 +1091,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table22");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable22;
 				}
 			}
@@ -1054,6 +1102,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table22");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(21);
 
 					if (cmd.equals("22")) {
 						dispose();
@@ -1079,7 +1128,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table23");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable23;
 				}
 			}
@@ -1090,6 +1139,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table23");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(22);
 
 					if (cmd.equals("23")) {
 						dispose();
@@ -1115,7 +1165,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnsActives) {
 					btnTableSaisie.setText("Table24");
-					lblModTable.setText("Choisir Table + �tat");
+					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable24;
 				}
 			}
@@ -1126,6 +1176,7 @@ public class Interface extends JFrame {
 				if (btnsClients) {
 					btnTableSaisie.setText("Table24");
 					String cmd = e.getActionCommand();
+					tableChoisie = Application.listeTables.get(23);
 
 					if (cmd.equals("24")) {
 						dispose();
@@ -1150,14 +1201,14 @@ public class Interface extends JFrame {
 		
 		
 		
-		// Image utilis�e pour l'interface principale, ici la salle.
+		// Image utilisee pour l'interface principale, ici la salle.
 
 		JLabel imgSalle = new JLabel("");
 		imgSalle.setIcon(new ImageIcon(Interface.class.getResource("/imgs/InterfaceSalle.png")));
 		imgSalle.setBounds(0, 48, 725, 435);
 		contentPane.add(imgSalle);
 
-		// Cr�ation du bouton pour choisir les clients d'une table
+		// Creation du bouton pour choisir les clients d'une table
 
 		JButton btnClientsTable = new JButton("Clients");
 		btnClientsTable.setForeground(new Color(255, 255, 255));
@@ -1211,7 +1262,7 @@ public class Interface extends JFrame {
 		btnClientsTable.setBounds(0, 146, 119, 85);
 		DiviseurDroite.add(btnClientsTable);
 
-		// Cr�ation du bouton pour modifier l'�tat d'une table.
+		// Creation du bouton pour modifier l'etat d'une table.
 
 		JButton btnModTable = new JButton("\u00C9tat tables");
 		btnModTable.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -1219,10 +1270,10 @@ public class Interface extends JFrame {
 		btnModTable.addActionListener(new ActionListener() {
 
 			/*
-			 * Lorsque ce bouton est activ�, on v�rifie d'abord si la modification des
-			 * tables est permise ou non. Son �tat est alors chang� � son inverse, et
-			 * l'interface est modifi� de fa�on � respecter cet �tat; l'image de la bani�re
-			 * du haut change en cons�quence, tout comme la possibilit� de modifier l'�tat
+			 * Lorsque ce bouton est active, on verifie d'abord si la modification des
+			 * tables est permise ou non. Son etat est alors change e son inverse, et
+			 * l'interface est modifie de faeon e respecter cet etat; l'image de la baniere
+			 * du haut change en consequence, tout comme la possibilite de modifier l'etat
 			 * des tables.
 			 */
 
@@ -1266,7 +1317,7 @@ public class Interface extends JFrame {
 		btnModTable.setForeground(new Color(255, 255, 255));
 		btnModTable.setBackground(new Color(50, 205, 50));
 
-		// Image utilis�e pour la bani�re de droite.
+		// Image utilisee pour la baniere de droite.
 
 		JLabel imgDiviseurDroite = new JLabel("New label");
 		imgDiviseurDroite.setBounds(0, 118, 119, 365);

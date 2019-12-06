@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import java.awt.Window.Type;
+import java.util.ArrayList;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -16,7 +17,25 @@ import javax.swing.ImageIcon;
 
 public class Application {
 	
+	protected static ArrayList<Table> listeTables = new ArrayList<Table>();
+	
+
+	
 	public static void main(String[] args) {
+		
+		for(int i = 1; i < 25 ; i++)
+		{
+			Table t = new Table();
+				for(int j = 1; j < 7; j++)
+				{
+					t.clients.add(new Client("Client"+i));
+				}
+				t.numero = i;
+			listeTables.add(t);
+			
+			
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

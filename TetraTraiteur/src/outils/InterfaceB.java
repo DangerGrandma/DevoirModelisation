@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JCheckBox;
@@ -41,6 +43,8 @@ public class InterfaceB extends JFrame {
 	private static boolean client4 = false;
 	private static boolean client5 = false;
 	private static boolean client6 = false;
+	
+	protected static Client clientChoisi;
 
 	public InterfaceB() {
 
@@ -119,12 +123,14 @@ public class InterfaceB extends JFrame {
 
 		// Cr�ation d'une metion de la table choisie pour les modification � apporter.
 
-		JButton btnTableSaisie = new JButton("Table#");
+		JButton btnTableSaisie = new JButton("Table#"+Interface.tableChoisie.numero);
 		btnTableSaisie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnTableSaisie.setBounds(637, 12, 81, 30);
+		btnTableSaisie.setMargin(new Insets(0, 0, 0, 0));
+		btnTableSaisie.setBorder(null);
 		btnTableSaisie.setContentAreaFilled(false);
 		btnTableSaisie.setOpaque(true);
 		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
@@ -177,6 +183,8 @@ public class InterfaceB extends JFrame {
 
 				if (cmd.equals("RETOUR")) {
 					dispose();
+					Interface.btnsClients = false;
+					clientChoisi = null;
 
 					new Interface().setVisible(true);
 				}
@@ -192,11 +200,17 @@ public class InterfaceB extends JFrame {
 
 		// Client 1
 
-		JCheckBox Client1 = new JCheckBox("Client 1");
+		JRadioButton Client1 = new JRadioButton("Client 1");
 		Client1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client1.setBounds(78, 96, 99, 38);
 		Client1.setVisible(client1);
 		contentPane.add(Client1);
+		
+		Client1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clientChoisi = Interface.tableChoisie.clients.get(0);
+			}
+		});
 		// Client1.setSelected(false);
 
 		// Bouton qui permet d'ajouter le client 1
@@ -216,6 +230,11 @@ public class InterfaceB extends JFrame {
 		Soustraire1.setBounds(245, 96, 52, 35);
 		contentPane.add(Soustraire1);
 		Soustraire1.setVisible(client1);
+		//Soustraire1.addActionListener(new ActionListener() {
+			//public void actionPerformed(ActionEvent e) {
+				//clientChoisi = null;
+		//	}
+	//	});
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
@@ -225,6 +244,7 @@ public class InterfaceB extends JFrame {
 				Client1.setVisible(true);
 				Ajouter1.setVisible(false);
 				Soustraire1.setVisible(true);
+
 			}
 		});
 		Soustraire1.addActionListener(new ActionListener() {
@@ -233,16 +253,23 @@ public class InterfaceB extends JFrame {
 				Client1.setVisible(false);
 				Ajouter1.setVisible(true);
 				Soustraire1.setVisible(false);
+				clientChoisi = null;
+
 			}
 
 		});
 
 		// Client 2
-		JCheckBox Client2 = new JCheckBox("Client 2");
+		JRadioButton Client2 = new JRadioButton("Client 2");
 		Client2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client2.setBounds(78, 156, 95, 38);
 		Client2.setVisible(client2);
 		contentPane.add(Client2);
+		Client2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clientChoisi = Interface.tableChoisie.clients.get(1);
+			}
+		});
 
 		// Bouton qui permet d'ajouter le client 2
 		JButton Ajouter2 = new JButton("+");
@@ -278,16 +305,23 @@ public class InterfaceB extends JFrame {
 				Client2.setVisible(false);
 				Ajouter2.setVisible(true);
 				Soustraire2.setVisible(false);
+				clientChoisi = null;
+				
 			}
 
 		});
 
 		// Client 3
-		JCheckBox Client3 = new JCheckBox("Client 3");
+		JRadioButton Client3 = new JRadioButton("Client 3");
 		Client3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client3.setBounds(78, 216, 95, 38);
 		Client3.setVisible(client3);
 		contentPane.add(Client3);
+		Client3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clientChoisi = Interface.tableChoisie.clients.get(2);
+			}
+		});
 
 		// Bouton qui permet d'ajouter le client 3
 		JButton Ajouter3 = new JButton("+");
@@ -323,16 +357,22 @@ public class InterfaceB extends JFrame {
 				Client3.setVisible(false);
 				Ajouter3.setVisible(true);
 				Soustraire3.setVisible(false);
+				clientChoisi = null;
 			}
 
 		});
 
 		// Client 4
-		JCheckBox Client4 = new JCheckBox("Client 4");
+		JRadioButton Client4 = new JRadioButton("Client 4");
 		Client4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client4.setBounds(78, 276, 95, 38);
 		Client4.setVisible(client4);
 		contentPane.add(Client4);
+		Client4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clientChoisi = Interface.tableChoisie.clients.get(3);
+			}
+		});
 
 		// Bouton qui permet d'ajouter le client 4
 		JButton Ajouter4 = new JButton("+");
@@ -360,6 +400,7 @@ public class InterfaceB extends JFrame {
 				Client4.setVisible(true);
 				Ajouter4.setVisible(false);
 				Soustraire4.setVisible(true);
+				clientChoisi = null;
 			}
 		});
 		Soustraire4.addActionListener(new ActionListener() {
@@ -373,11 +414,16 @@ public class InterfaceB extends JFrame {
 		});
 
 		// Client 5
-		JCheckBox Client5 = new JCheckBox("Client 5");
+		JRadioButton Client5 = new JRadioButton("Client 5");
 		Client5.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client5.setBounds(78, 336, 95, 38);
 		Client5.setVisible(client5);
 		contentPane.add(Client5);
+		Client1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clientChoisi = Interface.tableChoisie.clients.get(4);
+			}
+		});
 
 		// Bouton qui permet d'ajouter le client 5
 		JButton Ajouter5 = new JButton("+");
@@ -405,6 +451,7 @@ public class InterfaceB extends JFrame {
 				Client5.setVisible(true);
 				Ajouter5.setVisible(false);
 				Soustraire5.setVisible(true);
+				clientChoisi = null;
 			}
 		});
 		Soustraire5.addActionListener(new ActionListener() {
@@ -418,11 +465,16 @@ public class InterfaceB extends JFrame {
 		});
 
 		// Client 6
-		JCheckBox Client6 = new JCheckBox("Client 6");
+		JRadioButton Client6 = new JRadioButton("Client 6");
 		Client6.setFont(new Font("Tahoma", Font.BOLD, 16));
 		Client6.setBounds(78, 396, 95, 38);
 		Client6.setVisible(client6);
 		contentPane.add(Client6);
+		Client1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clientChoisi = Interface.tableChoisie.clients.get(5);
+			}
+		});
 
 		// Bouton qui permet d'ajouter le client 6
 		JButton Ajouter6 = new JButton("+");
@@ -450,6 +502,7 @@ public class InterfaceB extends JFrame {
 				Client6.setVisible(true);
 				Ajouter6.setVisible(false);
 				Soustraire6.setVisible(true);
+				clientChoisi = null;
 			}
 		});
 		Soustraire6.addActionListener(new ActionListener() {
