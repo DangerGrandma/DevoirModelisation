@@ -1,3 +1,10 @@
+/* @class Interface
+ * 
+ * L'interface principale du programme. C'est a partir de cette interface qu'on peut
+ * observer l'etat des tables et les modifiers, changer d'utilisateur et acceder au archives
+ * afin d'analyser les ventes et profits.
+ */
+
 package outils;
 
 import java.awt.BorderLayout;
@@ -52,11 +59,10 @@ public class Interface extends JFrame {
 
 	private JPanel contentPane; // Paneau d'affichage principal.
 	private static boolean btnsActives = false; // Variable qui permet d'afficher les boutons d'etat de table.
-	private static JButton boutonActuel; // Variable utilisee pour determiner quelle table a ete selectionnee pour
-											// modification.
-	//protected ArrayList<Table> listeTables = new ArrayList<Table>();
+	private static JButton boutonActuel; // Variable utilisee pour determiner quelle Table a ete selectionnee pour modification d'etat.
+											
 	protected static boolean btnsClients = false; // Variable qui permet d'afficher les boutons des clients d'une table.
-	protected static Table tableChoisie;
+	protected static Table tableChoisie; // Variable utiliser pour determiner quelle Table on travaillera dessus.
 
 	static JLabel boxUtilisateur;
 	
@@ -87,7 +93,7 @@ public class Interface extends JFrame {
 		DiviseurHaut.setLayout(null);
 
 		/*
-		 * Creation du bouton de changement d'etat de table e "Libre". La table choisie
+		 * Creation du bouton de changement d'etat de table a "Libre". La table choisie
 		 * en @param boutonActuel devient Libre, puis @param boutonActuel se vide afin
 		 * de limiter les operations et requiert une nouvelle selection pour autres
 		 * modifications.
@@ -107,7 +113,7 @@ public class Interface extends JFrame {
 		});
 
 		/*
-		 * Creation du bouton de changement d'etat de table e "Occupee". La table
+		 * Creation du bouton de changement d'etat de table a "Occupee". La table
 		 * choisie en @param boutonActuel devient Occupee, puis @param boutonActuel se
 		 * vide afin de limiter les operations et requiert une nouvelle selection pour
 		 * autres modifications.
@@ -127,7 +133,7 @@ public class Interface extends JFrame {
 		btnOccupee.setVisible(false);
 
 		/*
-		 * Creation du bouton de changement d'etat de table e "e Debarrasser". La table
+		 * Creation du bouton de changement d'etat de table a "A Debarrasser". La table
 		 * choisie en @param boutonActuel devient e Debarrasser, puis @param
 		 * boutonActuel se vide afin de limiter les operations et requiert une nouvelle
 		 * selection pour autres modifications.
@@ -147,7 +153,7 @@ public class Interface extends JFrame {
 		btnDebarrasser.setVisible(false);
 
 		/*
-		 * Creation du bouton de changement d'etat de table e "Autre Serveur". La table
+		 * Creation du bouton de changement d'etat de table a "Autre Serveur". La table
 		 * choisie en @param boutonActuel devient Autre Serveur, puis @param
 		 * boutonActuel se vide afin de limiter les operations et requiert une nouvelle
 		 * selection pour autres modifications.
@@ -166,7 +172,7 @@ public class Interface extends JFrame {
 		DiviseurHaut.add(btnAutreServeur);
 		btnAutreServeur.setVisible(false);
 
-		// Creation d'une metion de la table choisie pour les modification e apporter.
+		// Creation d'une metion de la table choisie pour les modification a apporter.
 
 		JButton btnTableSaisie = new JButton("Table#");
 		btnTableSaisie.addActionListener(new ActionListener() {
@@ -180,8 +186,9 @@ public class Interface extends JFrame {
 		DiviseurHaut.add(btnTableSaisie);
 		btnTableSaisie.setVisible(false);
 
-		// Creation d'un Label qui indique e l'utilisateur de choisir une table e
-		// modifier, puis son nouvel etat.
+		/*
+		 *  Creation d'un Label qui indique e l'utilisateur de choisir une table amodifier, puis son nouvel etat.
+		 */
 
 		JLabel lblModTable = new JLabel("Choisir Table + etat");
 		lblModTable.setFont(new Font("Arial", Font.BOLD, 12));
@@ -219,7 +226,7 @@ public class Interface extends JFrame {
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 
-		// Creation d'un paneau qui contient des donnees relatives e l'utilisateur
+		// Creation d'un paneau qui contient des donnees relatives a l'utilisateur
 		// actuel
 
 		JPanel PaneauUtilisateur = new JPanel();
@@ -254,12 +261,13 @@ public class Interface extends JFrame {
 		PaneauTemps.setLayout(null);
 
 		// Creation d'un objet qui prend en compte les donnees relatives au temps actuel
-		// (synchronisation e l'ordinateur).
+		// (synchronisation a l'ordinateur).
 
 		LocalDateTime dateHeure = LocalDateTime.now();
 
-		// Creation d'un Label qui afficher le temps actuel selon un format mois, jour
-		// et annee.
+		/* Creation d'un Label qui afficher le temps actuel selon un format mois, jour	
+		 * et annee.
+		 */
 
 		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
 		JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
@@ -268,8 +276,9 @@ public class Interface extends JFrame {
 		boxTempsJour.setBorder(null);
 		PaneauTemps.add(boxTempsJour);
 
-		// Creation d'une Label qui affiche le temps actuel selon un format heure et
-		// minutes.
+		/* Creation d'une Label qui affiche le temps actuel selon un format heure et
+		 *  minutes.
+		*/
 
 		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
 		JLabel lblNewLabel = new JLabel("" + dtfHeure.format(dateHeure));
@@ -295,17 +304,17 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(btnArchive);
 
 		/*
-		 * Boutons pour les tables de 1 e 24. Lorsque @param btnsActives est True, on
+		 * Boutons pour les tables de 1 a 24. Lorsque @param btnsActives est True, on
 		 * peut interagir avec les tables pour les modifier. La table selectionnee
 		 * en @param boutonActuel peut alors changer d'etat ou etre consultee et
-		 * changee. Cette table est d'ailleurs affichee en haut e gauche comme etat
-		 * selectionnee et prete e toute modification.
+		 * changee. Cette table est d'ailleurs affichee en haut a gauche comme etat
+		 * selectionnee et prete a toute modification.
 		 */
 
 		JButton btnTable1 = new JButton("1");
 		btnTable1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (btnsActives) {
+				if (btnsActives) { // Si on cherche a changer l'etat
 					btnTableSaisie.setText("Table1");
 					lblModTable.setText("Choisir Table + etat");
 					boutonActuel = btnTable1;
@@ -315,7 +324,7 @@ public class Interface extends JFrame {
 		btnTable1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				if (btnsClients) {
+				if (btnsClients) { // Si on cherche a travailler sur la table
 					btnTableSaisie.setText("Table1");
 					String cmd = e.getActionCommand();
 					tableChoisie = Application.listeTables.get(0);
@@ -323,13 +332,16 @@ public class Interface extends JFrame {
 					if (cmd.equals("1")) {
 						dispose();
 
-						new InterfaceB().setVisible(true);
+						new InterfaceB().setVisible(true); // Changement de fenetre
 					}
 
 				}
 
 			}
 		});
+		
+		// Options esthetiques
+		
 		btnTable1.setFont(new Font("Arial", Font.BOLD, 13));
 		btnTable1.setMargin(new Insets(0, 0, 0, 0));
 		btnTable1.setBorder(null);
@@ -1225,8 +1237,7 @@ public class Interface extends JFrame {
 					btnsClients = false;
 					btnsActives = false;
 
-					imgDiviseurHaut
-							.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(actif).jpg")));
+					imgDiviseurHaut.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(actif).jpg")));
 					btnLibre.setVisible(false);
 					btnOccupee.setVisible(false);
 					btnDebarrasser.setVisible(false);
@@ -1283,8 +1294,7 @@ public class Interface extends JFrame {
 
 				if (btnsActives) {
 					btnsActives = false;
-					imgDiviseurHaut
-							.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(inactif).jpg")));
+					imgDiviseurHaut.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(inactif).jpg")));
 					btnLibre.setVisible(false);
 					btnOccupee.setVisible(false);
 					btnDebarrasser.setVisible(false);
@@ -1299,8 +1309,7 @@ public class Interface extends JFrame {
 
 				else {
 					btnsActives = true;
-					imgDiviseurHaut
-							.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(actif).PNG")));
+					imgDiviseurHaut.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(actif).PNG")));
 					btnLibre.setVisible(true);
 					btnOccupee.setVisible(true);
 					btnDebarrasser.setVisible(true);

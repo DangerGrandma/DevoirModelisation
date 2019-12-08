@@ -1,3 +1,8 @@
+/* @class Application
+ * 
+ * Fonction MAIN du programme. Sert a le lancer.
+ */
+
 package outils;
 
 import java.awt.BorderLayout;
@@ -16,26 +21,23 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 
 public class Application {
-	
-	protected static ArrayList<Table> listeTables = new ArrayList<Table>();
-	
 
-	
+	protected static ArrayList<Table> listeTables = new ArrayList<Table>();
+
 	public static void main(String[] args) {
-		
-		for(int i = 1; i < 25 ; i++)
-		{
+
+		// Creation de la liste des tables.
+
+		for (int i = 1; i < 25; i++) {
 			Table t = new Table();
-				for(int j = 1; j < 7; j++)
-				{
-					t.clients.add(new Client("Client"+i));
-				}
-				t.numero = i;
+			for (int j = 1; j < 7; j++) {
+				t.clients.add(new Client("Client" + j));
+			}
+			t.numero = i;
 			listeTables.add(t);
-			
-			
+
 		}
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,5 +48,6 @@ public class Application {
 				}
 			}
 		});
+
 	}
 }

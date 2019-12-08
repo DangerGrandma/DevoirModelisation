@@ -1,9 +1,17 @@
+/* @class InterfaceB_1
+ * 
+ * Il s'agit de l'interface qui affiche les informations relatives au client
+ * choisi plus tot sur lequel on travaille a l'instant. Principalement, sert
+ * a afficher les articles dans la commande de ce client.
+ */
+
 package outils;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
@@ -30,8 +38,61 @@ import javax.swing.JTable;
 
 public class InterfaceB_1 extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField txtArticlesCommentairesQuantit;
+	static JPanel contentPane;
+	
+	static int posY = 100; // Attribut utilise pour determiner ou place les articles d'une commande dans la fenetre.
+	
+	/*
+	 * Cette methode sert a afficher les articles d'une commande d'un client. Il s'agit d'une boucle
+	 * qui traverse la liste des Articles.
+	 */
+	
+	public static void displayArticles(JPanel jp, int i)
+	{
+		for(int j = 0; j < i; j++) {
+			
+		// Ou placer le paneau qui contient l'info de l'article.
+			
+		JPanel panel = new JPanel();
+		panel.setBounds(10, posY, 707, 22);
+		jp.add(panel);
+		panel.setLayout(null);
+		panel.setBackground(Color.GRAY);
+		
+		// Label pour le nom d'article.
+		
+		JLabel articleClient = new JLabel(""+InterfaceB.clientChoisi.commande.get(j).nom);
+		articleClient.setHorizontalAlignment(SwingConstants.LEFT);
+		articleClient.setBounds(0, 4, 140, 14);
+		articleClient.setOpaque(true);
+		panel.add(articleClient);
+		
+		// Quantite de l'article.
+		
+		JLabel quantArticle = new JLabel("1");
+		quantArticle.setHorizontalAlignment(SwingConstants.CENTER);
+		quantArticle.setBounds(324, 4, 46, 14);
+		panel.add(quantArticle);
+		
+		// Prix de l'article.
+		
+		JLabel lblPrix = new JLabel(""+InterfaceB.clientChoisi.commande.get(j).prix);
+		lblPrix.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrix.setBounds(443, 4, 73, 14);
+		lblPrix.setOpaque(true);
+		panel.add(lblPrix);
+		
+		JButton button = new JButton("-");
+		button.setBounds(291, 0, 23, 23);
+		panel.add(button);
+		
+		JButton button_1 = new JButton("-");
+		button_1.setBounds(380, 0, 23, 23);
+		panel.add(button_1);
+		
+		posY += 24; // Nouvelle position pour le prochain article.
+		}
+	}
 
 	/**
 	 * Launch the application.
@@ -55,7 +116,7 @@ public class InterfaceB_1 extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfaceB_1() {
-		// Cr�ation de la fen�tre de l'application.
+		// Creation de la fenetre de l'application.
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 862, 522);
@@ -65,7 +126,7 @@ public class InterfaceB_1 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		// Cr�ation de la bani�re du haut.
+		// Cretion de la baniere du haut.
 
 		JPanel DiviseurHaut = new JPanel();
 		DiviseurHaut.setBounds(0, 0, 728, 48);
@@ -73,7 +134,7 @@ public class InterfaceB_1 extends JFrame {
 		contentPane.add(DiviseurHaut);
 		DiviseurHaut.setLayout(null);
 
-		// Cr�ation de la bani�re de droite
+		// Creation de la baniere de droite
 
 		JPanel DiviseurDroite = new JPanel();
 		DiviseurDroite.setBounds(727, 0, 119, 483);
@@ -81,7 +142,7 @@ public class InterfaceB_1 extends JFrame {
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 
-		// Cr�ation d'un paneau qui contient des donn�es relatives � l'utilisateur
+		// Creation d'un paneau qui contient des donnees relatives a l'utilisateur
 		// actuel
 
 		JPanel PaneauUtilisateur = new JPanel();
@@ -90,7 +151,7 @@ public class InterfaceB_1 extends JFrame {
 		PaneauUtilisateur.setBackground(Color.YELLOW);
 		PaneauUtilisateur.setLayout(null);
 
-		// Cr�ation d'un Label qui affiche ces informations
+		// Creation d'un Label qui affiche ces informations
 
 		JLabel boxUtilisateur = new JLabel("Utilisateur");
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
@@ -98,7 +159,7 @@ public class InterfaceB_1 extends JFrame {
 		boxUtilisateur.setBounds(10, 11, 99, 25);
 		PaneauUtilisateur.add(boxUtilisateur);
 
-		// Image utilis�e pour le paneau utilisateur.
+		// Image utilisee pour le paneau utilisateur.
 
 		JLabel imgUtilisateur = new JLabel("");
 		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
@@ -106,7 +167,7 @@ public class InterfaceB_1 extends JFrame {
 		PaneauUtilisateur.add(imgUtilisateur);
 		imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
 
-		// Cr�ation d'un paneau o� sont affich�es les informations relatives au temps.
+		// Creation d'un paneau oe sont affichees les informations relatives au temps.
 
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -114,13 +175,13 @@ public class InterfaceB_1 extends JFrame {
 		DiviseurDroite.add(PaneauTemps);
 		PaneauTemps.setLayout(null);
 
-		// Cr�ation d'un objet qui prend en compte les donn�es relatives au temps actuel
-		// (synchronisation � l'ordinateur).
+		// Creation d'un objet qui prend en compte les donnees relatives au temps actuel
+		// (synchronisation a l'ordinateur).
 
 		LocalDateTime dateHeure = LocalDateTime.now();
 
-		// Cr�ation d'un Label qui afficher le temps actuel selon un format mois, jour
-		// et ann�e.
+		// Creation d'un Label qui afficher le temps actuel selon un format mois, jour
+		// et annee.
 
 		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
 		JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
@@ -128,7 +189,7 @@ public class InterfaceB_1 extends JFrame {
 		boxTempsJour.setBounds(12, 11, 99, 29);
 		PaneauTemps.add(boxTempsJour);
 
-		// Cr�ation d'une Label qui affiche le temps actuel selon un format heure et
+		// Creation d'un Label qui affiche le temps actuel selon un format heure et
 		// minutes.
 
 		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
@@ -137,12 +198,14 @@ public class InterfaceB_1 extends JFrame {
 		lblNewLabel.setBounds(37, 35, 46, 14);
 		PaneauTemps.add(lblNewLabel);
 
-		// Image utilis�e pour la bani�re du temps.
+		// Image utilisee pour la baniere du temps.
 
 		JLabel imgTemps = new JLabel("");
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
 		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
+		
+		// Bouton qui sert a ajouter des articles a la commande du client.
 		
 		JButton btnAjouterArticle = new JButton("Ajouter Article");
 		btnAjouterArticle.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -158,13 +221,15 @@ public class InterfaceB_1 extends JFrame {
 				if (cmd.equals("Ajouter Article")) {
 					dispose();
 
-					new InterfaceC().setVisible(true);
+					new InterfaceC().setVisible(true); // Amene a l'InterfaceC
 				}
 
 			}
 		});
 		
-		JButton btnClient = new JButton(""+InterfaceB.clientChoisi.nom);
+		// Afficher le client sur lequel on travaille
+		
+		JButton btnClient = new JButton(""+InterfaceB.clientChoisi.nom); 
 		btnClient.setOpaque(true);
 		btnClient.setContentAreaFilled(false);
 		btnClient.setBackground(Color.LIGHT_GRAY);
@@ -172,7 +237,7 @@ public class InterfaceB_1 extends JFrame {
 		btnClient.setBorder(null);
 		DiviseurHaut.add(btnClient);
 
-		// Cr�ation du bouton Retour qui am�ne l'utlisateur � l'interface B.
+		// Creation du bouton Retour qui amene l'utlisateur a l'interface B.
 
 		JButton btnRetour = new JButton("RETOUR");
 		btnRetour.setForeground(Color.WHITE);
@@ -194,36 +259,48 @@ public class InterfaceB_1 extends JFrame {
 			}
 		});
 
-		// Cr�ation d'une metion de la table choisie pour les modification � apporter.
+		// Creation d'une mention de la table choisie pour les modification a apporter.
 
-		JButton btnTableSaisie = new JButton("Table"+Interface.tableChoisie.numero);
+		JButton btnTableSaisie = new JButton("Table"+Interface.tableChoisie.numero); 
 		btnTableSaisie.setBounds(530, 12, 81, 30);
 		DiviseurHaut.add(btnTableSaisie);
 		btnTableSaisie.setContentAreaFilled(false);
 		btnTableSaisie.setOpaque(true);
 		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
-
-		// Cr�ation d'une metion du client choisie pour les modification � apporter.
-
-		btnTableSaisie.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnTableSaisie.setContentAreaFilled(false);
 		btnTableSaisie.setOpaque(true);
 		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
 		
-		txtArticlesCommentairesQuantit = new JTextField();
-		txtArticlesCommentairesQuantit.setText("  Articles\t\t\t\t\t Quantit\u00E9\t   \t      Prix");
-		txtArticlesCommentairesQuantit.setEditable(false);
-		txtArticlesCommentairesQuantit.setBounds(10, 58, 707, 37);
-		contentPane.add(txtArticlesCommentairesQuantit);
-		txtArticlesCommentairesQuantit.setColumns(10);
+		// Baniere ou paneau guide pour les articles et leurs infos.
 		
-		JLabel labelArticles = new JLabel("");
+		JPanel panelCommande = new JPanel();
+		panelCommande.setBackground(new Color(153, 204, 204));
+		panelCommande.setBounds(10, 58, 707, 37);
+		contentPane.add(panelCommande);
+		panelCommande.setLayout(null);
 		
-		labelArticles.setBounds(20, 109, 105, 344);
-		contentPane.add(labelArticles);
+		// Nom Article
+		
+		JLabel lblArticle = new JLabel("Article");
+		lblArticle.setBounds(3, 12, 46, 14);
+		panelCommande.add(lblArticle);
+		
+		// Quantite Article
+		
+		JLabel lblQuantite = new JLabel("Quantite");
+		lblQuantite.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblQuantite.setHorizontalAlignment(SwingConstants.CENTER);
+		lblQuantite.setBounds(323, 12, 46, 14);
+		panelCommande.add(lblQuantite);
+		
+		// Prix Article
+		
+		JLabel lblPrix = new JLabel("Prix");
+		lblPrix.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrix.setBounds(455, 12, 46, 14);
+		panelCommande.add(lblPrix);
+		
+	
 		
 	}
 }

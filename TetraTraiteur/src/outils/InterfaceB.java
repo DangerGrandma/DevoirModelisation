@@ -1,3 +1,10 @@
+/* @class InterfaceB
+ * 
+ * Il s'agit de la classe qui traite de l'interface relative aux clients d'une table.
+ * C'est a partir de cette interface qu'on peut ajouter ou retirer les client d'une table,
+ * de proceder au paiement et de passer a la modification des commandes.
+ */
+
 package outils;
 
 import java.awt.BorderLayout;
@@ -10,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -44,11 +52,11 @@ public class InterfaceB extends JFrame {
 	private static boolean client5 = false;
 	private static boolean client6 = false;
 	
-	protected static Client clientChoisi;
+	protected static Client clientChoisi; // Client pour lequel on modifiera la commande.
 
 	public InterfaceB() {
 
-		// Cr�ation de la fen�tre de l'application.
+		// Creation de la fenetre de l'application.
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 862, 522);
@@ -58,7 +66,7 @@ public class InterfaceB extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		// Cr�ation de la bani�re du haut.
+		// Creation de la baniere du haut.
 
 		JPanel DiviseurHaut = new JPanel();
 		DiviseurHaut.setBounds(0, 0, 728, 48);
@@ -66,7 +74,7 @@ public class InterfaceB extends JFrame {
 		contentPane.add(DiviseurHaut);
 		DiviseurHaut.setLayout(null);
 
-		// Cr�ation de la bani�re de droite
+		// Creation de la baniere de droite
 
 		JPanel DiviseurDroite = new JPanel();
 		DiviseurDroite.setBounds(727, 0, 119, 483);
@@ -74,7 +82,7 @@ public class InterfaceB extends JFrame {
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 
-		// Cr�ation d'un paneau qui contient des donn�es relatives � l'utilisateur
+		// Creation d'un paneau qui contient des donnees relatives a l'utilisateur
 		// actuel
 
 		JPanel PaneauUtilisateur = new JPanel();
@@ -83,7 +91,7 @@ public class InterfaceB extends JFrame {
 		PaneauUtilisateur.setBackground(Color.YELLOW);
 		PaneauUtilisateur.setLayout(null);
 
-		// Cr�ation d'un Label qui affiche ces informations
+		// Creation d'un Label qui affiche ces informations
 
 		JLabel boxUtilisateur = new JLabel("Utilisateur");
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,7 +99,7 @@ public class InterfaceB extends JFrame {
 		boxUtilisateur.setBounds(10, 11, 99, 25);
 		PaneauUtilisateur.add(boxUtilisateur);
 
-		// Image utilis�e pour le paneau utilisateur.
+		// Image utilisee pour le paneau utilisateur.
 
 		JLabel imgUtilisateur = new JLabel("");
 		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
@@ -99,7 +107,7 @@ public class InterfaceB extends JFrame {
 		PaneauUtilisateur.add(imgUtilisateur);
 		imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
 
-		// Cr�ation d'un paneau o� sont affich�es les informations relatives au temps.
+		// Creation d'un paneau oe sont affichees les informations relatives au temps.
 
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -107,13 +115,13 @@ public class InterfaceB extends JFrame {
 		DiviseurDroite.add(PaneauTemps);
 		PaneauTemps.setLayout(null);
 
-		// Cr�ation d'un objet qui prend en compte les donn�es relatives au temps actuel
-		// (synchronisation � l'ordinateur).
+		// Creation d'un objet qui prend en compte les donnees relatives au temps actuel
+		// (synchronisation a l'ordinateur).
 
 		LocalDateTime dateHeure = LocalDateTime.now();
 
-		// Cr�ation d'un Label qui afficher le temps actuel selon un format mois, jour
-		// et ann�e.
+		// Creation d'un Label qui afficher le temps actuel selon un format mois, jour
+		// et annee.
 
 		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
 		JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
@@ -121,7 +129,7 @@ public class InterfaceB extends JFrame {
 		boxTempsJour.setBounds(12, 11, 99, 29);
 		PaneauTemps.add(boxTempsJour);
 
-		// Cr�ation d'une metion de la table choisie pour les modification � apporter.
+		// Creation d'une metion de la table choisie pour les modification a apporter.
 
 		JButton btnTableSaisie = new JButton("Table#"+Interface.tableChoisie.numero);
 		btnTableSaisie.addActionListener(new ActionListener() {
@@ -136,7 +144,7 @@ public class InterfaceB extends JFrame {
 		btnTableSaisie.setBackground(Color.LIGHT_GRAY);
 		DiviseurHaut.add(btnTableSaisie);
 
-		// Cr�ation d'une Label qui affiche le temps actuel selon un format heure et
+		// Creation d'une Label qui affiche le temps actuel selon un format heure et
 		// minutes.
 
 		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
@@ -145,14 +153,14 @@ public class InterfaceB extends JFrame {
 		lblNewLabel.setBounds(37, 35, 46, 14);
 		PaneauTemps.add(lblNewLabel);
 
-		// Image utilis�e pour la bani�re du temps.
+		// Image utilisee pour la baniere du temps.
 
 		JLabel imgTemps = new JLabel("");
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
 		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
 
-		// Cr�ation d'un bouton pour joindre les factures de plusieurs clients
+		// Creation d'un bouton pour joindre les factures de plusieurs clients
 		JButton btnJoindre = new JButton("Joindre");
 		btnJoindre.setForeground(Color.BLACK);
 		btnJoindre.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -160,7 +168,7 @@ public class InterfaceB extends JFrame {
 		btnJoindre.setBounds(0, 263, 119, 71);
 		DiviseurDroite.add(btnJoindre);
 
-		// Cr�ation d'un bouton pour faire le paiement/imprimer une facture
+		// Creation d'un bouton pour faire le paiement/imprimer une facture
 		JButton BtnPayement = new JButton("Paiement");
 		BtnPayement.setForeground(Color.BLACK);
 		BtnPayement.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -168,7 +176,7 @@ public class InterfaceB extends JFrame {
 		BtnPayement.setBounds(0, 379, 119, 71);
 		DiviseurDroite.add(BtnPayement);
 
-		// Cr�ation du bouton Retour qui am�ne l'utlisateur � l'interface A.
+		// Creation du bouton Retour qui amene l'utlisateur a l'interface A.
 
 		JButton btnRetour = new JButton("RETOUR");
 		btnRetour.setForeground(Color.WHITE);
@@ -193,8 +201,8 @@ public class InterfaceB extends JFrame {
 		});
 
 		/*
-		 * Cr�ation des six boutons des clients possible � la table s�lectionn�e � cot�
-		 * de chaque client, il y a une option de supprimer le client ou de l'ajouter �
+		 * Creation des six boutons des clients possible a la table selectionnee a cote
+		 * de chaque client, il y a une option de supprimer le client ou de l'ajouter a
 		 * la liste d'une table
 		 */
 
@@ -211,7 +219,6 @@ public class InterfaceB extends JFrame {
 				clientChoisi = Interface.tableChoisie.clients.get(0);
 			}
 		});
-		// Client1.setSelected(false);
 
 		// Bouton qui permet d'ajouter le client 1
 		JButton Ajouter1 = new JButton("+");
@@ -230,11 +237,6 @@ public class InterfaceB extends JFrame {
 		Soustraire1.setBounds(245, 96, 52, 35);
 		contentPane.add(Soustraire1);
 		Soustraire1.setVisible(client1);
-		//Soustraire1.addActionListener(new ActionListener() {
-			//public void actionPerformed(ActionEvent e) {
-				//clientChoisi = null;
-		//	}
-	//	});
 
 		// fonctions qui permet de faire fonctionner les boutons "ajouter" et
 		// "soustraire"
@@ -419,7 +421,7 @@ public class InterfaceB extends JFrame {
 		Client5.setBounds(78, 336, 95, 38);
 		Client5.setVisible(client5);
 		contentPane.add(Client5);
-		Client1.addActionListener(new ActionListener() {
+		Client5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clientChoisi = Interface.tableChoisie.clients.get(4);
 			}
@@ -470,7 +472,7 @@ public class InterfaceB extends JFrame {
 		Client6.setBounds(78, 396, 95, 38);
 		Client6.setVisible(client6);
 		contentPane.add(Client6);
-		Client1.addActionListener(new ActionListener() {
+		Client6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clientChoisi = Interface.tableChoisie.clients.get(5);
 			}
@@ -515,7 +517,17 @@ public class InterfaceB extends JFrame {
 
 		});
 
-		// Cr�ation d'un bouton permettant de modifier la commande d'un client
+		// Cration d'un groupe de bouton. Cela permet a un seul client d'ettre traite a la fois.
+		
+		ButtonGroup groupeClients = new ButtonGroup();
+		groupeClients.add(Client1);
+		groupeClients.add(Client2);
+		groupeClients.add(Client3);
+		groupeClients.add(Client4);
+		groupeClients.add(Client5);
+		groupeClients.add(Client6);
+		
+		// Creation d'un bouton permettant de modifier la commande d'un client
 		JButton btnModClients = new JButton("Commande client");
 		btnModClients.setForeground(Color.BLACK);
 		btnModClients.setFont(new Font("Tahoma", Font.BOLD, 9));
@@ -547,12 +559,18 @@ public class InterfaceB extends JFrame {
 					new InterfaceB_1().setVisible(true);
 
 				}
+				
+					// Fonction d'affichage de la commande du client. Remise a zero de parametres reutilises.
+					
+					InterfaceB_1.displayArticles(InterfaceB_1.contentPane,InterfaceB.clientChoisi.commande.size());									
+					InterfaceB_1.posY = 100;
+					InterfaceC.articlesChoisis.clear();
 			}
 		});
 		btnModClients.setBounds(0, 151, 119, 71);
 		DiviseurDroite.add(btnModClients);
 
-		// Cr�ation d'un background g�n�ral
+		// Creation d'un background general
 		JLabel Background = new JLabel("");
 		Background.setIcon(new ImageIcon(Interface.class.getResource("/imgs/FondClients.png")));
 		Background.setBackground(new Color(220, 220, 220));

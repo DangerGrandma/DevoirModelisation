@@ -12,6 +12,7 @@ public class Article {
 	protected String nom;
 	protected String completion; // État du complétion de l'article en cuisine. Modifiable seulement par les cuisiniers.
 	protected int prix;
+	protected int quantite;
 
 	
 	// Constructeur des articles du menu

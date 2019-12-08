@@ -1,3 +1,10 @@
+/* @class InterfaceC
+ * 
+ * Il s'agit de l'interface qui sert a ajouter des articles a la commande d'un client.
+ * Les articles sont representes par des boutons. Ceux selectionnes seront ajoutes a 
+ * la commande du client selectionne plus tot.
+ */
+
 package outils;
 
 import java.awt.BorderLayout;
@@ -30,7 +37,10 @@ public class InterfaceC extends JFrame {
 
 	private JPanel contentPane;
 	
-	private static ArrayList<Article> articlesChoisis = new ArrayList<Article>();
+	
+	protected static ArrayList<Article> articlesChoisis = new ArrayList<Article>();  //Liste des articles a ajouter a la commande du client	
+	
+	// Fonction non appliquée pour l'instant
 	
 	public void retirerArticle(String s)
 	{
@@ -63,7 +73,7 @@ public class InterfaceC extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfaceC() {
-		// Crï¿½ation de la fenï¿½tre de l'application.
+		// Creation de la fenetre de l'application.
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 862, 522);
@@ -73,7 +83,7 @@ public class InterfaceC extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		// Crï¿½ation de la baniï¿½re du haut.
+		// Creation de la baniere du haut.
 
 		JPanel DiviseurHaut = new JPanel();
 		DiviseurHaut.setBounds(0, 0, 728, 48);
@@ -81,7 +91,7 @@ public class InterfaceC extends JFrame {
 		contentPane.add(DiviseurHaut);
 		DiviseurHaut.setLayout(null);
 
-		// Crï¿½ation de la baniï¿½re de droite
+		// Creation de la baniere de droite
 
 		JPanel DiviseurDroite = new JPanel();
 		DiviseurDroite.setBounds(727, 0, 119, 483);
@@ -89,7 +99,7 @@ public class InterfaceC extends JFrame {
 		contentPane.add(DiviseurDroite);
 		DiviseurDroite.setLayout(null);
 
-		// Crï¿½ation d'un paneau qui contient des donnï¿½es relatives ï¿½ l'utilisateur
+		// Creation d'un paneau qui contient des donnees relatives a l'utilisateur
 		// actuel
 
 		JPanel PaneauUtilisateur = new JPanel();
@@ -98,7 +108,7 @@ public class InterfaceC extends JFrame {
 		PaneauUtilisateur.setBackground(Color.YELLOW);
 		PaneauUtilisateur.setLayout(null);
 
-		// Crï¿½ation d'un Label qui affiche ces informations
+		// Creation d'un Label qui affiche ces informations
 
 		JLabel boxUtilisateur = new JLabel("Utilisateur");
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
@@ -106,7 +116,7 @@ public class InterfaceC extends JFrame {
 		boxUtilisateur.setBounds(10, 11, 99, 25);
 		PaneauUtilisateur.add(boxUtilisateur);
 
-		// Image utilisï¿½e pour le paneau utilisateur.
+		// Image utilisee pour le paneau utilisateur.
 
 		JLabel imgUtilisateur = new JLabel("");
 		imgUtilisateur.setVerticalAlignment(SwingConstants.TOP);
@@ -114,7 +124,7 @@ public class InterfaceC extends JFrame {
 		PaneauUtilisateur.add(imgUtilisateur);
 		imgUtilisateur.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Banner2.PNG")));
 
-		// Crï¿½ation d'un paneau oï¿½ sont affichï¿½es les informations relatives au temps.
+		// Creation d'un paneau oe sont affichees les informations relatives au temps.
 
 		JPanel PaneauTemps = new JPanel();
 		PaneauTemps.setBackground(Color.PINK);
@@ -122,13 +132,13 @@ public class InterfaceC extends JFrame {
 		DiviseurDroite.add(PaneauTemps);
 		PaneauTemps.setLayout(null);
 
-		// Crï¿½ation d'un objet qui prend en compte les donnï¿½es relatives au temps actuel
-		// (synchronisation ï¿½ l'ordinateur).
+		// Creation d'un objet qui prend en compte les donnees relatives au temps actuel
+		// (synchronisation a l'ordinateur).
 
 		LocalDateTime dateHeure = LocalDateTime.now();
 
-		// Crï¿½ation d'un Label qui afficher le temps actuel selon un format mois, jour
-		// et annï¿½e.
+		// Creation d'un Label qui afficher le temps actuel selon un format mois, jour
+		// et annee.
 
 		DateTimeFormatter dtfJour = DateTimeFormatter.ofPattern("MMM dd, 2019");
 		JLabel boxTempsJour = new JLabel("" + dtfJour.format(dateHeure));
@@ -136,7 +146,7 @@ public class InterfaceC extends JFrame {
 		boxTempsJour.setBounds(12, 11, 99, 29);
 		PaneauTemps.add(boxTempsJour);
 
-		// Crï¿½ation d'une Label qui affiche le temps actuel selon un format heure et
+		// Creation d'une Label qui affiche le temps actuel selon un format heure et
 		// minutes.
 
 		DateTimeFormatter dtfHeure = DateTimeFormatter.ofPattern("hh:mm");
@@ -145,14 +155,14 @@ public class InterfaceC extends JFrame {
 		lblNewLabel.setBounds(37, 35, 46, 14);
 		PaneauTemps.add(lblNewLabel);
 
-		// Image utilisï¿½e pour la baniï¿½re du temps.
+		// Image utilisee pour la baniere du temps.
 
 		JLabel imgTemps = new JLabel("");
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
 		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
 
-		// Crï¿½ation du bouton Retour qui amï¿½ne l'utlisateur ï¿½ l'interface B.
+		// Creation du bouton Retour qui amene l'utlisateur a l'interface B.
 
 		JButton btnRetour = new JButton("RETOUR");
 		btnRetour.setForeground(Color.WHITE);
@@ -174,7 +184,10 @@ public class InterfaceC extends JFrame {
 			}
 		});
 		
-		// Menu
+		/*
+		 *  Menu. Chaque article du menu selectionne sera ajoute a la commande du client lors de
+		 *  l'appui du bouton confirmer.
+		 */
 
 		JCheckBoxMenuItem menuSalade = new JCheckBoxMenuItem("Salade");
 		menuSalade.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -432,7 +445,7 @@ public class InterfaceC extends JFrame {
 
 		});
 
-		// Crï¿½ation du bouton annuler la commande, qui efface tout ce qu'il y a dans la
+		// Creation du bouton annuler la commande, qui efface tout ce qu'il y a dans la
 		// liste de la commande
 
 		JButton btnAnnuler = new JButton("Annuler");
@@ -479,7 +492,7 @@ public class InterfaceC extends JFrame {
 
 		});
 
-		// Crï¿½ation du bouton qui confirme le "panier" de la commande et qui retourne ï¿½
+		// Creation du bouton qui confirme le "panier" de la commande et qui retourne a
 		// l'interface B_1
 
 		JButton btnConfirmer = new JButton("Confirmer");
@@ -495,10 +508,18 @@ public class InterfaceC extends JFrame {
 					for(int i = 0; i < articlesChoisis.size(); i++) {
 					InterfaceB.clientChoisi.commande.add(articlesChoisis.get(i));
 					}
+					
 					dispose();
 
-					new InterfaceB_1().setVisible(true);
+					/*
+					 *  Fonctions pour mettre a jour l'affichage de la commande du client. Remise a zero
+					 *  de parametres qui seront reutilises pour d'autres clients.
+					 */
 					
+					new InterfaceB_1().setVisible(true);				
+					InterfaceB_1.displayArticles(InterfaceB_1.contentPane,InterfaceB.clientChoisi.commande.size());									
+					InterfaceB_1.posY = 100;
+					articlesChoisis.clear();
 				}
 
 			}
