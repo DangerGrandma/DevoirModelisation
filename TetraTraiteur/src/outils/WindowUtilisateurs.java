@@ -16,36 +16,58 @@ public class WindowUtilisateurs {
 	
 	public static void afficherUtil() {
 		JFrame frameUtil = new JFrame("Choisir un Utilisateur");
-		frameUtil.setBounds(100,100,151,153);
+		frameUtil.setBounds(100,100,151,183);
 		frameUtil.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameUtil.getContentPane().setLayout(null);
 		
-		JButton btnSarah = new JButton("Sarah");
-		btnSarah.setBounds(10, 11, 115, 23);
-		frameUtil.getContentPane().add(btnSarah);
-		btnSarah.addActionListener(new ActionListener() {
+		JButton btnServeur = new JButton("Serveur");
+		btnServeur.setBounds(10, 11, 115, 23);
+		frameUtil.getContentPane().add(btnServeur);
+		btnServeur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Interface.boxUtilisateur.setText("Sarah");
+				Interface.boxUtilisateur.setText("Serveur");
+				Interface.btnClientsTable.setVisible(true);
+				Interface.btnModTable.setVisible(true);
+				Interface.btnArchive.setVisible(false);
 				frameUtil.dispose();
 			}
 		});
 		
-		JButton btnSimonpierre = new JButton("Simon-Pierre");
-		btnSimonpierre.setBounds(10, 45, 115, 23);
-		frameUtil.getContentPane().add(btnSimonpierre);
-		btnSimonpierre.addActionListener(new ActionListener() {
+		JButton btnBusBoy = new JButton("Bus boy");
+		btnBusBoy.setBounds(10, 45, 115, 23);
+		frameUtil.getContentPane().add(btnBusBoy);
+		btnBusBoy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Interface.boxUtilisateur.setText("Simon-Pierre");
+				Interface.boxUtilisateur.setText("Bus boy");
+				Interface.btnClientsTable.setVisible(false);
+				Interface.btnModTable.setVisible(true);
+				Interface.btnArchive.setVisible(false);
 				frameUtil.dispose();
 			}
 		});
 		
-		JButton btnAlexandre = new JButton("Alexandre");
-		btnAlexandre.setBounds(10, 79, 115, 23);
-		frameUtil.getContentPane().add(btnAlexandre);
-		btnAlexandre.addActionListener(new ActionListener() {
+		JButton btnACuisinier = new JButton("Cuisinier");
+		btnACuisinier.setBounds(10, 79, 115, 23);
+		frameUtil.getContentPane().add(btnACuisinier);
+		btnACuisinier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Interface.boxUtilisateur.setText("Alexandre");
+				Interface.boxUtilisateur.setText("Cuisinier");
+				Interface.btnClientsTable.setVisible(true);
+				Interface.btnModTable.setVisible(true);
+				Interface.btnArchive.setVisible(false);
+				frameUtil.dispose();
+			}
+		});
+		
+		JButton btnGerant = new JButton("Gérant");
+		btnGerant.setBounds(10, 110, 115, 23);
+		frameUtil.getContentPane().add(btnGerant);
+		btnGerant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Interface.boxUtilisateur.setText("Gérant");
+				Interface.btnClientsTable.setVisible(false);
+				Interface.btnModTable.setVisible(false);
+				Interface.btnArchive.setVisible(true);
 				frameUtil.dispose();
 			}
 		});

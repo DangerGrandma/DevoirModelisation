@@ -66,7 +66,9 @@ public class Interface extends JFrame {
 
 	static JLabel boxUtilisateur;
 	
-	
+	static JButton btnClientsTable;
+	static JButton btnModTable;
+	static JButton btnArchive;
 	
 	public Interface() {
 
@@ -296,11 +298,12 @@ public class Interface extends JFrame {
 
 		// Creation du bouton pour invoquer une fenetre des archives.
 
-		JButton btnArchive = new JButton("Archives");
+		btnArchive = new JButton("Archives");
 		btnArchive.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnArchive.setForeground(new Color(255, 255, 255));
 		btnArchive.setBackground(new Color(50, 205, 50));
 		btnArchive.setBounds(0, 363, 119, 85);
+		btnArchive.setVisible(false);
 		DiviseurDroite.add(btnArchive);
 
 		/*
@@ -1222,7 +1225,7 @@ public class Interface extends JFrame {
 
 		// Creation du bouton pour choisir les clients d'une table
 
-		JButton btnClientsTable = new JButton("Clients");
+		btnClientsTable = new JButton("Clients");
 		btnClientsTable.setForeground(new Color(255, 255, 255));
 		btnClientsTable.addActionListener(new ActionListener() {
 
@@ -1272,12 +1275,12 @@ public class Interface extends JFrame {
 		btnClientsTable.setBackground(new Color(50, 205, 50));
 		btnClientsTable.setBounds(0, 146, 119, 85);
 		DiviseurDroite.add(btnClientsTable);
+		btnClientsTable.setVisible(false);
 
 		// Creation du bouton pour modifier l'etat d'une table.
 
-		JButton btnModTable = new JButton("\u00C9tat tables");
+		btnModTable = new JButton("\u00C9tat tables");
 		btnModTable.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnModTable.setBorder(null);
 		btnModTable.addActionListener(new ActionListener() {
 
 			/*
@@ -1325,6 +1328,7 @@ public class Interface extends JFrame {
 		DiviseurDroite.add(btnModTable);
 		btnModTable.setForeground(new Color(255, 255, 255));
 		btnModTable.setBackground(new Color(50, 205, 50));
+		btnModTable.setVisible(false);
 
 		// Image utilisee pour la baniere de droite.
 
