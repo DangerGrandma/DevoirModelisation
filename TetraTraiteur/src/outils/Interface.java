@@ -1296,7 +1296,6 @@ public class Interface extends JFrame {
 				// Si modification permise.
 
 				if (btnsActives) {
-					btnsActives = false;
 					imgDiviseurHaut.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(inactif).jpg")));
 					btnLibre.setVisible(false);
 					btnOccupee.setVisible(false);
@@ -1304,14 +1303,13 @@ public class Interface extends JFrame {
 					btnAutreServeur.setVisible(false);
 					btnTableSaisie.setVisible(false);
 					lblModTable.setVisible(false);
-					btnClientsTable.setVisible(false);
-
+					btnClientsTable.setVisible(true);
+					btnsActives = false;
 				}
 
 				// Si modification n'est pas permise.
 
 				else {
-					btnsActives = true;
 					imgDiviseurHaut.setIcon(new ImageIcon(Interface.class.getResource("/imgs/DiviseurHaut(actif).PNG")));
 					btnLibre.setVisible(true);
 					btnOccupee.setVisible(true);
@@ -1319,8 +1317,11 @@ public class Interface extends JFrame {
 					btnAutreServeur.setVisible(true);
 					btnTableSaisie.setVisible(true);
 					lblModTable.setVisible(true);
-					btnClientsTable.setVisible(true);
+					btnClientsTable.setVisible(false);
+					btnsActives = true;
 				}
+				
+				
 			}
 
 		});

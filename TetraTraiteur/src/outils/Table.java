@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class Table {
 	
-	protected int numero;
+	protected static int numero;
 	protected String etat = "Autre Serveur"; // État de la Table
-	protected ArrayList<Client> clients = new ArrayList<Client>(); // Liste des Clients de la Table
+	protected static ArrayList<Client> clients = new ArrayList<Client>(); // Liste des Clients de la Table
 
 }

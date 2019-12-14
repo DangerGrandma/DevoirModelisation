@@ -53,7 +53,7 @@ public class WindowUtilisateurs {
 			public void actionPerformed(ActionEvent e) {
 				Interface.boxUtilisateur.setText("Cuisinier");
 				Interface.btnClientsTable.setVisible(true);
-				Interface.btnModTable.setVisible(true);
+				Interface.btnModTable.setVisible(false);
 				Interface.btnArchive.setVisible(false);
 				frameUtil.dispose();
 			}

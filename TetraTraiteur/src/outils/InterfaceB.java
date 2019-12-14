@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
@@ -159,14 +160,6 @@ public class InterfaceB extends JFrame {
 		imgTemps.setBounds(0, 0, 119, 71);
 		PaneauTemps.add(imgTemps);
 		imgTemps.setIcon(new ImageIcon(Interface.class.getResource("/imgs/bane3.PNG")));
-
-		// Creation d'un bouton pour joindre les factures de plusieurs clients
-		JButton btnJoindre = new JButton("Joindre");
-		btnJoindre.setForeground(Color.BLACK);
-		btnJoindre.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnJoindre.setBackground(new Color(50, 205, 50));
-		btnJoindre.setBounds(0, 263, 119, 71);
-		DiviseurDroite.add(btnJoindre);
 
 		// Creation d'un bouton pour faire le paiement/imprimer une facture
 		JButton BtnPayement = new JButton("Paiement");
@@ -570,6 +563,21 @@ public class InterfaceB extends JFrame {
 		btnModClients.setBounds(0, 151, 119, 71);
 		DiviseurDroite.add(btnModClients);
 
+		BtnPayement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int choice = JOptionPane.showOptionDialog(contentPane,
+					      "Voulez-vous imprimer le reçu?", 
+					      "Reçu?", 
+					      JOptionPane.YES_NO_OPTION, 
+					      JOptionPane.QUESTION_MESSAGE, 
+					      null, null, null);
+				if (choice == JOptionPane.YES_OPTION)
+				  {
+					clientChoisi.afficherCommande();
+				  }
+				
+			}});
+		
 		// Creation d'un background general
 		JLabel Background = new JLabel("");
 		Background.setIcon(new ImageIcon(Interface.class.getResource("/imgs/FondClients.png")));
