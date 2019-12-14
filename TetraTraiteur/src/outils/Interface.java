@@ -971,6 +971,7 @@ public class Interface extends JFrame {
 					String cmd = e.getActionCommand();
 					tableChoisie = Application.listeTables.get(17);
 
+
 					if (cmd.equals("18")) {
 						dispose();
 
@@ -1279,7 +1280,7 @@ public class Interface extends JFrame {
 
 		// Creation du bouton pour modifier l'etat d'une table.
 
-		btnModTable = new JButton("\u00C9tat tables");
+		btnModTable = new JButton("Etat tables");
 		btnModTable.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnModTable.addActionListener(new ActionListener() {
 

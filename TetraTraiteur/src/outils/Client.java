@@ -16,7 +16,7 @@ public class Client {
     private static final DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	
 	protected String nom;
-	protected static ArrayList<Article> commande = new ArrayList<Article>(); // Liste d'objets Article commandées
+	protected ArrayList<Article> commande = new ArrayList<Article>(); // Liste d'objets Article commandées
 	protected int total; // Total des @param prix des objets Article
 	
 	
@@ -40,7 +40,7 @@ public class Client {
         System.out.println(sdf.format(date));
 		System.out.println();
 		
-		System.out.println("Table : " + Table.numero);
+		System.out.println("Table : " + Interface.tableChoisie.numero);
 		System.out.println();
 		
 		System.out.println("Articles");

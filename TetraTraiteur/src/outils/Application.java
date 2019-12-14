@@ -32,12 +32,14 @@ public class Application {
 			Table t = new Table();
 			for (int j = 1; j < 7; j++) {
 				t.clients.add(new Client("Client" + j));
+				t.numero = i;
 			}
-			t.numero = i;
+			
 			listeTables.add(t);
-
 		}
 
+		System.out.println(listeTables.get(0).numero);
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -48,6 +50,6 @@ public class Application {
 				}
 			}
 		});
-
+		
 	}
 }
