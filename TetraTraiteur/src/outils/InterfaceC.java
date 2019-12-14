@@ -508,7 +508,6 @@ public class InterfaceC extends JFrame {
 					for(int i = 0; i < articlesChoisis.size(); i++) {
 						articlesChoisis.get(i).quantite++;
 					InterfaceB.clientChoisi.commande.add(articlesChoisis.get(i));
-					//System.out.println(articlesChoisis.get(i).nom + " quantité: "+ articlesChoisis.get(i).quantite);
 					}
 					
 					dispose();

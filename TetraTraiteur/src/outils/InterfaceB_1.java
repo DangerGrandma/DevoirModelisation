@@ -39,7 +39,6 @@ import javax.swing.JTable;
 public class InterfaceB_1 extends JFrame {
 
 	static JPanel contentPane;
-	
 	static int posY = 100; // Attribut utilise pour determiner ou place les articles d'une commande dans la fenetre.
 	
 	/*
@@ -50,6 +49,8 @@ public class InterfaceB_1 extends JFrame {
 	public static void displayArticles(JPanel jp, int i)
 	{
 		for(int j = 0; j < i; j++) {
+			int[] num = {0};
+			num[0] = j;
 			
 		// Ou placer le paneau qui contient l'info de l'article.
 			
@@ -74,6 +75,47 @@ public class InterfaceB_1 extends JFrame {
 		lblPrix.setBounds(443, 4, 73, 14);
 		lblPrix.setOpaque(true);
 		panel.add(lblPrix);
+		
+		// Label pour l'état de la commande
+		
+		//String etatActuel = new String("Commandé");
+		
+		JLabel lblEtat = new JLabel("" + InterfaceB.clientChoisi.commande.get(j).completion);
+		lblEtat.setBounds(620, 4, 100, 14);
+		panel.add(lblEtat);
+		
+		// Bouton d'état de la commande
+		
+		JButton etatArticle = new JButton("État");
+		etatArticle.setBounds(530, 4, 70, 14);
+		panel.add(etatArticle);
+		etatArticle.setVisible(Interface.cuisinierChoisi);
+		
+		etatArticle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			    if (InterfaceB.clientChoisi.commande.get(num[0]).completion.equals("Commandé")) {
+					lblEtat.setText("En préparation");
+					InterfaceB.clientChoisi.commande.get(num[0]).completion = "En préparation";
+					panel.revalidate();
+					panel.repaint();
+				}
+				else if (InterfaceB.clientChoisi.commande.get(num[0]).completion.equals("En préparation")) {
+					lblEtat.setText("Prêt");
+					InterfaceB.clientChoisi.commande.get(num[0]).completion = "Prêt";
+					panel.revalidate();
+					panel.repaint();
+				}
+				else if (InterfaceB.clientChoisi.commande.get(num[0]).completion.equals("Prêt")) {
+					lblEtat.setText("Commandé");
+					InterfaceB.clientChoisi.commande.get(num[0]).completion = "Commandé";
+					panel.revalidate();
+					panel.repaint();
+				}
+			}
+		});
+		
+		// Bouton pour supprimer un article
 		
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setBounds(324, 4, 95, 14);

@@ -29,6 +29,7 @@ public class WindowUtilisateurs {
 				Interface.btnClientsTable.setVisible(true);
 				Interface.btnModTable.setVisible(true);
 				Interface.btnArchive.setVisible(false);
+				Interface.cuisinierChoisi = false;
 				frameUtil.dispose();
 			}
 		});
@@ -42,6 +43,7 @@ public class WindowUtilisateurs {
 				Interface.btnClientsTable.setVisible(false);
 				Interface.btnModTable.setVisible(true);
 				Interface.btnArchive.setVisible(false);
+				Interface.cuisinierChoisi = false;
 				frameUtil.dispose();
 			}
 		});
@@ -55,6 +57,7 @@ public class WindowUtilisateurs {
 				Interface.btnClientsTable.setVisible(true);
 				Interface.btnModTable.setVisible(false);
 				Interface.btnArchive.setVisible(false);
+				Interface.cuisinierChoisi = true;
 				frameUtil.dispose();
 			}
 		});

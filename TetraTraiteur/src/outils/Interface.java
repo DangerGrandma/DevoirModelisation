@@ -70,6 +70,8 @@ public class Interface extends JFrame {
 	static JButton btnModTable;
 	static JButton btnArchive;
 	
+	static boolean cuisinierChoisi;
+	
 	public Interface() {
 
 
