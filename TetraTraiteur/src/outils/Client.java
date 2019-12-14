@@ -7,6 +7,10 @@
 package outils;
 
 import java.util.Date;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,6 +70,28 @@ public class Client {
 		System.out.println("MERCI!");
 		
 	}
+	
+	public void afficherCommandePopUp(JPanel contentPane) {
+		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(sdf.format(date));
+        
+        String articles = "";
+		int total = 0;
+        
+		for (int i = 0; i < commande.size(); i++)
+		{
+			articles = articles + commande.get(i).nom + " - " + commande.get(i).prix + "\n";
+			total += commande.get(i).prix;
+		}
+		
+		double taxes = total * 0.15;
+        
+		JOptionPane.showMessageDialog(contentPane, "Nom du Restaurant\n\n" + sdf.format(date) + "\n" +  "Table : " + Interface.tableChoisie.numero + "\n" +
+		"Articles\n" + "------------------------------\n\n" + articles + "\n\nTotal avant taxes : " + total + "\nTaxes : " + taxes + "\n\nTotal : " + (total + taxes) + 
+		"\n\n\nMERCI!");
+	  }
+	
 	
 	public int getTotal()
 	{

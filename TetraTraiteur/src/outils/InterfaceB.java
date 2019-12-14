@@ -14,8 +14,11 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -574,6 +577,7 @@ public class InterfaceB extends JFrame {
 				if (choice == JOptionPane.YES_OPTION)
 				  {
 					clientChoisi.afficherCommande();
+					clientChoisi.afficherCommandePopUp(contentPane);
 				  }
 				
 			}});

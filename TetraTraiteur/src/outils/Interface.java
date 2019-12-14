@@ -302,6 +302,14 @@ public class Interface extends JFrame {
 		// Creation du bouton pour invoquer une fenetre des archives.
 
 		btnArchive = new JButton("Archives");
+		btnArchive.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				
+				new WindowArchives().setVisible(true);;
+			}
+		});
 		btnArchive.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnArchive.setForeground(new Color(255, 255, 255));
 		btnArchive.setBackground(new Color(50, 205, 50));
