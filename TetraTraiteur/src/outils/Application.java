@@ -37,8 +37,6 @@ public class Application {
 			
 			listeTables.add(t);
 		}
-
-		System.out.println(listeTables.get(0).numero);
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

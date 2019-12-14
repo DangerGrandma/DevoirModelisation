@@ -67,13 +67,6 @@ public class InterfaceB_1 extends JFrame {
 		articleClient.setOpaque(true);
 		panel.add(articleClient);
 		
-		// Quantite de l'article.
-		
-		JLabel quantArticle = new JLabel("1");
-		quantArticle.setHorizontalAlignment(SwingConstants.CENTER);
-		quantArticle.setBounds(324, 4, 46, 14);
-		panel.add(quantArticle);
-		
 		// Prix de l'article.
 		
 		JLabel lblPrix = new JLabel(""+InterfaceB.clientChoisi.commande.get(j).prix);
@@ -82,13 +75,24 @@ public class InterfaceB_1 extends JFrame {
 		lblPrix.setOpaque(true);
 		panel.add(lblPrix);
 		
-		JButton button = new JButton("-");
-		button.setBounds(291, 0, 23, 23);
-		panel.add(button);
+		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.setBounds(324, 4, 95, 14);
+		panel.add(btnSupprimer);
 		
-		JButton button_1 = new JButton("-");
-		button_1.setBounds(380, 0, 23, 23);
-		panel.add(button_1);
+		btnSupprimer.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				for (int x=0; x < InterfaceB.clientChoisi.commande.size(); x++) {
+					if (articleClient.getText().equals(InterfaceB.clientChoisi.commande.get(x).nom)) {
+						InterfaceB.clientChoisi.commande.remove(x);
+					}
+				}
+				jp.remove(panel);
+				jp.revalidate();
+				jp.repaint();
+			}
+		});
+
 		
 		posY += 24; // Nouvelle position pour le prochain article.
 		}
@@ -284,14 +288,6 @@ public class InterfaceB_1 extends JFrame {
 		JLabel lblArticle = new JLabel("Article");
 		lblArticle.setBounds(3, 12, 46, 14);
 		panelCommande.add(lblArticle);
-		
-		// Quantite Article
-		
-		JLabel lblQuantite = new JLabel("Quantite");
-		lblQuantite.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblQuantite.setHorizontalAlignment(SwingConstants.CENTER);
-		lblQuantite.setBounds(323, 12, 46, 14);
-		panelCommande.add(lblQuantite);
 		
 		// Prix Article
 		
