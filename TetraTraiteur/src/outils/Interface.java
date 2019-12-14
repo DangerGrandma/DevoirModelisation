@@ -1315,7 +1315,10 @@ public class Interface extends JFrame {
 					btnAutreServeur.setVisible(false);
 					btnTableSaisie.setVisible(false);
 					lblModTable.setVisible(false);
-					btnClientsTable.setVisible(true);
+					
+					if (boxUtilisateurNom.equals("Serveur")) {
+						btnClientsTable.setVisible(true);
+					};
 					btnsActives = false;
 				}
 
