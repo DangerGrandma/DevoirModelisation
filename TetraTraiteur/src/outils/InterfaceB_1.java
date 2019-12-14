@@ -199,7 +199,7 @@ public class InterfaceB_1 extends JFrame {
 
 		// Creation d'un Label qui affiche ces informations
 
-		JLabel boxUtilisateur = new JLabel("Utilisateur");
+		JLabel boxUtilisateur = new JLabel(Interface.boxUtilisateurNom);
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
 		boxUtilisateur.setFont(new Font("Tahoma", Font.BOLD, 11));
 		boxUtilisateur.setBounds(10, 11, 99, 25);

@@ -25,6 +25,7 @@ public class WindowUtilisateurs {
 		frameUtil.getContentPane().add(btnServeur);
 		btnServeur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Interface.boxUtilisateurNom = "Serveur";
 				Interface.boxUtilisateur.setText("Serveur");
 				Interface.btnClientsTable.setVisible(true);
 				Interface.btnModTable.setVisible(true);
@@ -39,6 +40,7 @@ public class WindowUtilisateurs {
 		frameUtil.getContentPane().add(btnBusBoy);
 		btnBusBoy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Interface.boxUtilisateurNom = "Bus boy";
 				Interface.boxUtilisateur.setText("Bus boy");
 				Interface.btnClientsTable.setVisible(false);
 				Interface.btnModTable.setVisible(true);
@@ -53,6 +55,7 @@ public class WindowUtilisateurs {
 		frameUtil.getContentPane().add(btnACuisinier);
 		btnACuisinier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Interface.boxUtilisateurNom = "Cuisinier";
 				Interface.boxUtilisateur.setText("Cuisinier");
 				Interface.btnClientsTable.setVisible(true);
 				Interface.btnModTable.setVisible(false);
@@ -67,6 +70,7 @@ public class WindowUtilisateurs {
 		frameUtil.getContentPane().add(btnGerant);
 		btnGerant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Interface.boxUtilisateurNom = "Gérant";
 				Interface.boxUtilisateur.setText("Gérant");
 				Interface.btnClientsTable.setVisible(false);
 				Interface.btnModTable.setVisible(false);

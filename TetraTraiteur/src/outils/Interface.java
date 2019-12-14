@@ -65,6 +65,7 @@ public class Interface extends JFrame {
 	protected static Table tableChoisie; // Variable utiliser pour determiner quelle Table on travaillera dessus.
 
 	static JLabel boxUtilisateur;
+	static String boxUtilisateurNom = "Utilisateur";
 	
 	static JButton btnClientsTable;
 	static JButton btnModTable;
@@ -241,7 +242,7 @@ public class Interface extends JFrame {
 
 		// Creation d'un Label qui affiche ces informations
 
-		boxUtilisateur = new JLabel("Utilisateur");
+		boxUtilisateur = new JLabel(boxUtilisateurNom);
 		boxUtilisateur.setHorizontalAlignment(SwingConstants.CENTER);
 		boxUtilisateur.setFont(new Font("Tahoma", Font.BOLD, 11));
 		boxUtilisateur.setBounds(10, 11, 99, 25);
@@ -1340,7 +1341,43 @@ public class Interface extends JFrame {
 		imgDiviseurDroite.setBounds(0, 118, 119, 365);
 		DiviseurDroite.add(imgDiviseurDroite);
 		imgDiviseurDroite.setIcon(new ImageIcon(Interface.class.getResource("/imgs/Bannerdroite.PNG")));
-
+		
+		// Paramétrage des boutons selon l'utilisateur
+		
+		if (boxUtilisateurNom.equals("Utilisateur")) {
+			//Interface.boxUtilisateur.setText("Utilisateur");
+			Interface.btnClientsTable.setVisible(false);
+			Interface.btnModTable.setVisible(false);
+			Interface.btnArchive.setVisible(false);
+		}
+		
+		else if (boxUtilisateurNom.equals("Serveur")) {
+			Interface.boxUtilisateur.setText("Serveur");
+			Interface.btnClientsTable.setVisible(true);
+			Interface.btnModTable.setVisible(true);
+			Interface.btnArchive.setVisible(false);
+		}
+		
+		else if (boxUtilisateurNom.equals("Bus boy")) {
+			Interface.boxUtilisateur.setText("Bus boy");
+			Interface.btnClientsTable.setVisible(false);
+			Interface.btnModTable.setVisible(true);
+			Interface.btnArchive.setVisible(false);
+		}
+		
+		else if (boxUtilisateurNom.equals("Cuisinier")) {
+			Interface.boxUtilisateur.setText("Cuisinier");
+			Interface.btnClientsTable.setVisible(true);
+			Interface.btnModTable.setVisible(true);
+			Interface.btnArchive.setVisible(false);
+		}
+		
+		else if (boxUtilisateurNom.equals("Gérant")) {
+			Interface.boxUtilisateur.setText("Gérant");
+			Interface.btnClientsTable.setVisible(false);
+			Interface.btnModTable.setVisible(false);
+			Interface.btnArchive.setVisible(true);
+		}
 
 	}
 }
